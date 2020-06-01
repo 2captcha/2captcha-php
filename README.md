@@ -1,4 +1,4 @@
-# PHP Module for 2Captcha API.
+# PHP Module for 2Captcha API
 The easiest way to quickly integrate [2Captcha] into your code to automate solving of any types of captcha.
 
 - [Installation](#installation)
@@ -31,7 +31,7 @@ This package can be installed via composer or manually
 
 ### Composer
 ```
-composer require 2captcha/2captcha-php
+composer require 2captcha/2captcha
 ```
 
 ### Manual
