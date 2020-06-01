@@ -1,11 +1,12 @@
 {
-    "name": "2captcha/2captcha-php",
+    "name": "2captcha/2captcha",
     "description": "PHP package for easy integration with 2captcha API",
     "keywords": [
         "2captcha",
         "captcha",
         "recaptcha"
     ],
+    "license": "MIT",
     "authors": [
         {
             "name": "2captcha",
