@@ -1,6 +1,6 @@
 {
-    "name": "2captcha/2captcha",
-    "description": "Solve any captcha (image, recaptcha, click, rotate and other)",
+    "name": "2captcha/2captcha-php",
+    "description": "PHP package for easy integration with 2captcha API",
     "keywords": [
         "2captcha",
         "captcha",
