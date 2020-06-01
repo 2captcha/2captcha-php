@@ -1,3 +1,6 @@
+# PHP Module for 2Captcha API.
+The easiest way to quickly integrate [2Captcha] into your code to automate solving of any types of captcha.
+
 - [Installation](#installation)
   - [Composer](#composer)
   - [Manual](#manual)
@@ -171,3 +174,4 @@ try {
     // captcha is not solved so far
 }
 ```
+[2Captcha]: https://2captcha.com/
