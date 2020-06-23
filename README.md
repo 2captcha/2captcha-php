@@ -142,7 +142,7 @@ Canvas method can be used when you need to draw a line around an object on image
 $result = $solver->canvas('path/to/captcha.jpg');
 ```
 ### ClickCaptcha
-ClickCaptcha method returns coordinates of points on capthca image. Can be used if you need to click on particular points on the image.
+ClickCaptcha method returns coordinates of points on captcha image. Can be used if you need to click on particular points on the image.
 ```php
 $result = $solver->coordinates('path/to/captcha.jpg');
 ```
