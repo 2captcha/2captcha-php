@@ -57,8 +57,36 @@ $solver = new \TwoCaptcha\TwoCaptcha([
 ]);
 ```
 
+### TwoCaptcha instance options
+
+|Option|Default value|Description|
+|---|---|---|
+|softId|-|your software ID obtained after publishing in [2captcha sofware catalog]|
+|callback|-|URL of your web-sever that receives the captcha recognition result. The URl should be first registered in [pingback settings] of your account|
+|defaultTimeout|120|Polling timeout in seconds for all captcha types except ReCaptcha. Defines how long the module tries to get the answer from `res.php` API endpoint|
+|recaptchaTimeout|600|Polling timeout for ReCaptcha in seconds. Defines how long the module tries to get the answer from `res.php` API endpoint|
+|pollingInterval|10|Interval in seconds between requests to `res.php` API endpoint, setting values less than 5 seconds is not recommended|
+
+>  **IMPORTANT:** once `callback` is defined for `TwoCaptcha` instance, all methods return only the captcha ID and DO NOT poll the API to get the result. The result will be sent to the callback URL.
+To get the answer manually use [getResult method](#send--getresult)
+
 ## Solve captcha
-Below you can find basic examples for every captcha type. Check out `examples` directory to find more examples with all available options.
+When you submit any image-based captcha use can provide additional options to help 2captcha workers to solve it properly.
+
+### Captcha options
+|Option|Default Value|Description|
+|---|---|---|
+|numeric|0|Defines if captcha contains numeric or other symbols [see more info in the API docs][post options]|
+|minLength|0|minimal answer lenght|
+|maxLength|0|maximum answer length|
+|phrase|0|defines if the answer contains multiple words or not|
+|caseSensitive|0|defines if the answer is case sensitive|
+|calc|0|defines captcha requires calculation|
+|lang|-|defines the captcha language, see the [list of supported languages] |
+|hintImg|-|an image with hint shown to workers with the captcha|
+|hintText|-|hint or task text shown to workers with the captcha|
+
+Below you can find basic examples for every captcha type. Check out [examples directory] to find more examples with all available options.
 
 ### Normal Captcha
 To bypass a normal captcha (distorted text on image) use the following method. This method also can be used to recognize any text on the image.
@@ -129,6 +157,7 @@ Token-based method to bypass Capy puzzle captcha.
 $result = $solver->capy([
     'sitekey' => 'PUZZLE_Abc1dEFghIJKLM2no34P56q7rStu8v',
     'url'     => 'http://mysite.com/',
+    'api_server' => 'https://jp.api.capy.me/',
 ]);
 ```
 ### Grid
@@ -191,3 +220,8 @@ try {
 }
 ```
 [2Captcha]: https://2captcha.com/
+[2captcha sofware catalog]: https://2captcha.com/software
+[pingback settings]: https://2captcha.com/setting/pingback
+[post options]: https://2captcha.com/2captcha-api#normal_post
+[list of supported languages]: https://2captcha.com/2captcha-api#language
+[examples directory]: /examples

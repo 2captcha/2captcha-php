@@ -10,6 +10,7 @@ try {
     $result = $solver->capy([
         'sitekey' => 'PUZZLE_Abc1dEFghIJKLM2no34P56q7rStu8v',
         'url'     => 'http://mysite.com/',
+        'api_server' => 'https://jp.api.capy.me/',
         'proxy'   => [
             'type' => 'HTTPS',
             'uri'  => 'login:password@IP_address:PORT',
