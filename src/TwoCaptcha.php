@@ -443,8 +443,8 @@ class TwoCaptcha
 
         $files = $this->extractFiles($captcha);
 
-        $this->mapParams($captcha);
-        $this->mapParams($files);
+        $this->mapParams($captcha, $captcha['method']);
+        $this->mapParams($files, $captcha['method']);
 
         $response = $this->apiClient->in($captcha, $files);
 
@@ -632,9 +632,9 @@ class TwoCaptcha
      *
      * @param $params
      */
-    private function mapParams(&$params)
+    private function mapParams(&$params, $method)
     {
-        $map = $this->getParamsMap($params['method']);
+        $map = $this->getParamsMap($method);
 
         foreach ($map as $new => $old) {
             if (isset($params[$new])) {
