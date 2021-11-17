@@ -1,4 +1,5 @@
 <?php
+require(dirname(__FILE__).'/AbstractWrapperTestCase.php');
 spl_autoload_register(function ($class) {
     $prefix = 'TwoCaptcha\\';
 
@@ -7,7 +8,8 @@ spl_autoload_register(function ($class) {
 
     $relativeClass = substr($class, $len);
 
-    $file = __DIR__ . '/' . str_replace('\\', '/', $relativeClass) . '.php';
+    $file = __DIR__ . '/../src/' . str_replace('\\', '/', $relativeClass) . '.php';
+    echo($file);
 
     if (file_exists($file)) require $file;
 });

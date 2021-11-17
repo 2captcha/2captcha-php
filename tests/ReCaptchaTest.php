@@ -13,6 +13,10 @@ class ReCaptchaTest extends AbstractWrapperTestCase
             'url'       => 'https://mysite.com/page/with/recaptcha',
             'invisible' => 1,
             'action'    => 'verify',
+            'proxy'     => [
+                'type' => 'HTTPS',
+                'uri'  => 'username:str0ngP@$$W0rd@1.2.3.4:4321',
+            ]
         ];
 
         $sendParams = [
@@ -21,6 +25,8 @@ class ReCaptchaTest extends AbstractWrapperTestCase
             'pageurl'   => 'https://mysite.com/page/with/recaptcha',
             'invisible' => 1,
             'action'    => 'verify',
+            'proxy'     => 'username:str0ngP@$$W0rd@1.2.3.4:4321',
+            'proxytype' => 'HTTPS'
         ];
 
         $this->checkIfCorrectParamsSendAndResultReturned([

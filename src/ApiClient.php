@@ -12,7 +12,17 @@ class ApiClient
      *
      * @var string
      */
-    private $server = 'https://2captcha.com';
+    private $server;
+
+    /**
+     * ApiClient constructor.
+     * @param $options string
+     */
+    public function __construct($options) {
+        if (is_string($options)) {
+            $this->server = $options;
+        }
+    }
 
     /**
      * Network client

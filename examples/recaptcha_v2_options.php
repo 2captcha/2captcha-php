@@ -4,7 +4,10 @@ set_time_limit(610);
 
 require(__DIR__ . '/../src/autoloader.php');
 
-$solver = new \TwoCaptcha\TwoCaptcha('YOUR_API_KEY');
+$solver = new \TwoCaptcha\TwoCaptcha([
+    'apiKey'	=> 'YOUR_API_KEY',
+    'server'	=> 'http://rucaptcha.com'
+]);
 
 try {
     $result = $solver->recaptcha([
