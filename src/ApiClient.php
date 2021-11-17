@@ -20,7 +20,7 @@ class ApiClient
      */
     public function __construct($options) {
         if (is_string($options)) {
-            $this->$server = $options;
+            $this->server = $options;
         }
     }
 
