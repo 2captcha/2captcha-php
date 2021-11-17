@@ -647,7 +647,6 @@ class TwoCaptcha
             $proxy = $params['proxy'];
             $params['proxy'] = $proxy['uri'];
             $params['proxytype'] = $proxy['type'];
-            unset($params['proxy']);
         }
     }
 
