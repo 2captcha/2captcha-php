@@ -48,6 +48,7 @@ $solver = new \TwoCaptcha\TwoCaptcha('YOUR_API_KEY');
 Also there are few options that can be configured:
 ```php
 $solver = new \TwoCaptcha\TwoCaptcha([
+    'server'           => 'http://rucaptcha.com',
     'apiKey'           => 'YOUR_API_KEY',
     'softId'           => 123,
     'callback'         => 'https://your.site/result-receiver',
