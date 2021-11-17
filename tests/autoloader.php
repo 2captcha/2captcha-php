@@ -9,7 +9,6 @@ spl_autoload_register(function ($class) {
     $relativeClass = substr($class, $len);
 
     $file = __DIR__ . '/../src/' . str_replace('\\', '/', $relativeClass) . '.php';
-    echo($file);
-
+    
     if (file_exists($file)) require $file;
 });
