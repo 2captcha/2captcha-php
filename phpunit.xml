@@ -1,7 +1,8 @@
-<phpunit bootstrap="vendor/autoload.php">
+<phpunit bootstrap="tests/autoloader.php">
     <testsuites>
         <testsuite name="TwoCaptcha">
             <directory>tests</directory>
+            <exclude>tests/autoloader.php</exclude>
         </testsuite>
     </testsuites>
 </phpunit>
