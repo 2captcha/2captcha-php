@@ -22,6 +22,13 @@ class TwoCaptcha
     private $apiKey;
 
     /**
+     * API server URL: http://2captcha.com (default) or http://rucaptcha.com
+     *
+     * @string
+     */
+    private $server = 'http://2captcha.com';
+
+    /**
      * ID of software developer. Developers who integrated their software
      * with our service get reward: 10% of spendings of their software users.
      *
@@ -85,6 +92,7 @@ class TwoCaptcha
             ];
         }
 
+        if (!empty($options['server'])) $this->server = $options['server'];
         if (!empty($options['apiKey'])) $this->apiKey = $options['apiKey'];
         if (!empty($options['softId'])) $this->softId = $options['softId'];
         if (!empty($options['callback'])) $this->callback = $options['callback'];
@@ -92,7 +100,7 @@ class TwoCaptcha
         if (!empty($options['recaptchaTimeout'])) $this->recaptchaTimeout = $options['recaptchaTimeout'];
         if (!empty($options['pollingInterval'])) $this->pollingInterval = $options['pollingInterval'];
 
-        $this->apiClient = new ApiClient();
+        $this->apiClient = new ApiClient($this->server);
     }
 
     public function setHttpClient($apiClient)
