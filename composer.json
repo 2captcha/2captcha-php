@@ -16,7 +16,10 @@
         "solve captcha",
         "captcha solver",
         "decaptcha",
-        "2captcha.com"
+        "2captcha.com",
+        "lemin",
+        "cloudflare turnstile",
+        "amazon waf"
     ],
     "license": "MIT",
     "authors": [
