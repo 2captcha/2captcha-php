@@ -174,6 +174,57 @@ class TwoCaptcha
     }
 
     /**
+     * Wrapper for solving Yandex
+     *
+     * @param $captcha
+     * @return \stdClass
+     * @throws ApiException
+     * @throws NetworkException
+     * @throws TimeoutException
+     * @throws ValidationException
+     */
+    public function yandex($captcha)
+    {
+        $captcha['method'] = 'yandex';
+
+        return $this->solve($captcha, ['timeout' => $this->recaptchaTimeout]);
+    }
+    
+    /**
+     * Wrapper for solving Turnstile
+     *
+     * @param $captcha
+     * @return \stdClass
+     * @throws ApiException
+     * @throws NetworkException
+     * @throws TimeoutException
+     * @throws ValidationException
+     */
+    public function turnstile($captcha)
+    {
+        $captcha['method'] = 'turnstile';
+
+        return $this->solve($captcha, ['timeout' => $this->recaptchaTimeout]);
+    }
+
+    /**
+     * Wrapper for solving AmazonWaf
+     *
+     * @param $captcha
+     * @return \stdClass
+     * @throws ApiException
+     * @throws NetworkException
+     * @throws TimeoutException
+     * @throws ValidationException
+     */
+    public function amazon_waf($captcha)
+    {
+        $captcha['method'] = 'amazon_waf';
+
+        return $this->solve($captcha, ['timeout' => $this->recaptchaTimeout]);
+    }
+
+    /**
      * Wrapper for solving FunCaptcha
      *
      * @param $captcha
@@ -208,6 +259,24 @@ class TwoCaptcha
     }
 
     /**
+     * Wrapper for solving GeeTest V4
+     *
+     * @param $captcha
+     * @return \stdClass
+     * @throws ApiException
+     * @throws NetworkException
+     * @throws TimeoutException
+     * @throws ValidationException
+     */
+    public function geetest_v4($captcha)
+    {
+        $captcha['method'] = 'geetest_v4';
+
+        return $this->solve($captcha);
+    }
+    
+
+    /**
      * Wrapper for solving hCaptcha
      *
      * @param $captcha
@@ -223,6 +292,23 @@ class TwoCaptcha
 
         return $this->solve($captcha);
     }
+
+    /**
+     * Wrapper for solving Lemin
+     *
+     * @param $captcha
+     * @return \stdClass
+     * @throws ApiException
+     * @throws NetworkException
+     * @throws TimeoutException
+     * @throws ValidationException
+     */
+    public function lemin($captcha)
+    {
+        $captcha['method'] = 'lemin';
+
+        return $this->solve($captcha);
+    }    
 
     /**
      * Wrapper for solving KeyCaptcha
@@ -701,6 +787,8 @@ class TwoCaptcha
             'apiServer'     => 'api_server',
             'softId'        => 'soft_id',
             'callback'      => 'pingback',
+            'captchaId'     => 'captcha_id',
+            'divId'         => 'div_id'
         ];
 
         $methodMap = [
