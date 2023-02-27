@@ -181,6 +181,11 @@ This method can be used to solve a captcha that asks to rotate an object. Mostly
 ```php
 $result = $solver->rotate('path/to/captcha.jpg');
 ```
+### Audio
+This method can be used to solve a audio captcha
+```php
+$result = $solver->solveaudio('path/to/audio.mp3');
+```
 
 ## Other methods
 
