@@ -6,7 +6,7 @@ require(__DIR__ . '/../src/autoloader.php');
 
 $solver = new \TwoCaptcha\TwoCaptcha([
     'apiKey'	=> 'YOUR_API_KEY',
-    'server'	=> 'http://rucaptcha.com'
+    'server'	=> 'http://2captcha.com'
 ]);
 
 try {

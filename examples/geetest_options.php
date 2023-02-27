@@ -4,7 +4,10 @@ set_time_limit(130);
 
 require(__DIR__ . '/../src/autoloader.php');
 
-$solver = new \TwoCaptcha\TwoCaptcha('YOUR_API_KEY');
+$solver = new \TwoCaptcha\TwoCaptcha([
+    'apiKey'	=> 'YOUR_API_KEY',
+    'server'	=> 'http://2captcha.com'
+]);
 
 $ch = curl_init();
 curl_setopt($ch, CURLOPT_URL, "https://launches.endclothing.com/distil_r_captcha_challenge");
