@@ -341,6 +341,33 @@ class TwoCaptcha
     }
 
     /**
+     * Wrapper for solving audio captcha
+     *
+     * @param $captcha
+     * @return \stdClass
+     * @throws ApiException
+     * @throws NetworkException
+     * @throws TimeoutException
+     * @throws ValidationException     
+     */
+    public function solveaudio($captcha){
+        if (is_string($captcha)) {
+            if (!file_exists($captcha)) {
+                throw new ValidationException('File not found (' . $captcha . ')');
+            }            
+            $body = file_get_contents($captcha);
+            $body = base64_encode($body);
+
+            $captcha = [
+                'body' => $body,
+            ];
+        }       
+        
+        $captcha['method'] = 'solveaudio';
+        return $this->solve($captcha);
+    }
+
+    /**
      * Wrapper for solving RotateCaptcha
      *
      * @param $captcha
@@ -353,26 +380,17 @@ class TwoCaptcha
     public function rotate($captcha)
     {
         if (is_string($captcha)) {
+            if (!file_exists($captcha)) {
+                throw new ValidationException('File not found (' . $captcha . ')');
+            }                  
+            $body = file_get_contents($captcha);
+            $body = base64_encode($body);            
             $captcha = [
-                'file' => $captcha,
+                'body' => $body,
             ];
         }
-
-        if (!$this->isArrayAssoc($captcha)) {
-            $captcha = [
-                'files' => $captcha,
-            ];
-        }
-
-        if (isset($captcha['file'])) {
-            $captcha['files'] = [$captcha['file']];
-            unset($captcha['file']);
-        }
-
-        $this->prepareFilesList($captcha);
 
         $captcha['method'] = 'rotatecaptcha';
-
         return $this->solve($captcha);
     }
 
