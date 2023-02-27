@@ -22,6 +22,7 @@ The easiest way to quickly integrate [2Captcha] captcha solving service into you
   - [Rotate](#rotate)
   - [Audio](#audio)
   - [Yandex](#yandex)
+  - [Lemin](#lemin)
 - [Other methods](#other-methods)
   - [send / getResult](#send--getresult)
   - [balance](#balance)
@@ -205,6 +206,15 @@ Use this method to solve Yandex and obtain a token to bypass the protection.
 $result = $solver->yandex([
     'sitekey' => 'Y5Lh0tiycconMJGsFd3EbbuNKSp1yaZESUOIHfeV',
     'url'     => 'https://rutube.ru',
+]);
+```
+### Lemin
+Use this method to solve Lemin and obtain a token to bypass the protection.
+```php
+$result = $solver->lemin([
+    'captchaId' => 'CROPPED_d3d4d56_73ca4008925b4f83a8bed59c2dd0df6d',
+    'apiServer' => 'api.leminnow.com',
+    'url'       => 'http://sat2.aksigorta.com.tr',
 ]);
 ```
 
