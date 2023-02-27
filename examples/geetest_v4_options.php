@@ -4,7 +4,7 @@ set_time_limit(130);
 
 require(__DIR__ . '/../src/autoloader.php');
 
-$solver = new \TwoCaptcha\TwoCaptcha('033da1bd01896590301b0d65d16f2204');
+$solver = new \TwoCaptcha\TwoCaptcha('YOUR_API_KEY');
 
 $ch = curl_init();
 curl_setopt($ch, CURLOPT_URL, "https://mysite.com/captcha_challenge");
