@@ -24,6 +24,7 @@ The easiest way to quickly integrate [2Captcha] captcha solving service into you
   - [Yandex](#yandex)
   - [Lemin](#lemin)
   - [Turnstile](#turnstile)
+  - [AmazonWaf](#amazonwaf)
 - [Other methods](#other-methods)
   - [send / getResult](#send--getresult)
   - [balance](#balance)
@@ -224,6 +225,16 @@ Use this method to solve Turnstile and obtain a token to bypass the protection.
 $result = $solver->turnstile([
     'sitekey' => '0x4AAAAAAAChNiVJM_WtShFf',
     'url'     => 'https://ace.fusionist.io',
+]);
+```
+### AmazonWaf
+Use this method to solve AmazonWaf and obtain a token to bypass the protection.
+```php
+$result = $solver->amazon_waf([
+    'sitekey' => 'AQIDAHjcYu/GjX+QlghicBgQ/7bFaQZ+m5FKCMDnO+vTbNg96AF5H1K/siwSLK7RfstKtN5bAAAAfjB8BgkqhkiG9w0BBwagbzBtAgEAMGgGCSqGSIb3DQEHATAeBglg',
+    'url'     => 'https://non-existent-example.execute-api.us-east-1.amazonaws.com',
+    'iv'      => 'test_iv',
+    'context' => 'test_context'
 ]);
 ```
 
