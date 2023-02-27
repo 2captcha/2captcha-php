@@ -8,7 +8,7 @@ $solver = new \TwoCaptcha\TwoCaptcha('YOUR_API_KEY');
 
 try {
     $result = $solver->turnstile([
-        'sitekey' => '0x4AAAAAAAChNiVJM_WtShFf	',
+        'sitekey' => '0x4AAAAAAAChNiVJM_WtShFf',
         'url'     => 'https://ace.fusionist.io',
     ]);
 } catch (\Exception $e) {

@@ -11,7 +11,7 @@ $solver = new \TwoCaptcha\TwoCaptcha([
 
 try {
     $result = $solver->turnstile([
-        'sitekey' => '0x4AAAAAAAChNiVJM_WtShFf	',
+        'sitekey' => '0x4AAAAAAAChNiVJM_WtShFf',
         'url'     => 'https://ace.fusionist.io',
         'data'    => 'Test-data_rvghbjnoiu8y7tfvgbhnj',
         'action'  => 'test',
