@@ -10,17 +10,17 @@ $solver = new \TwoCaptcha\TwoCaptcha([
 ]);
 
 $ch = curl_init();
-curl_setopt($ch, CURLOPT_URL, "https://launches.endclothing.com/distil_r_captcha_challenge");
+curl_setopt($ch, CURLOPT_URL, "https://mysite.com/captcha_challenge");
 curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
 $resp = curl_exec($ch);
 $challenge = explode(";", $resp)[0];
 
 try {
-    $result = $solver->geetest([
-        'gt'        => 'f2ae6cadcf7886856696502e1d55e00c',
-        'apiServer' => 'api-na.geetest.com',
+    $result = $solver->geetest_v4([
+        'captchaId' => '72bf15796d0b69c43867452fea615052',
+        'apiServer' => 'api.geetest.com',
         'challenge' => $challenge,
-        'url'       => 'https://launches.endclothing.com/distil_r_captcha.html',
+        'url'       => 'https://mysite.com/captcha.html',
         'proxy'     => [
             'type' => 'HTTPS',
             'uri'  => 'login:password@IP_address:PORT',

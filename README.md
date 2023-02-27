@@ -12,6 +12,7 @@ The easiest way to quickly integrate [2Captcha] captcha solving service into you
   - [ReCaptcha v3](#recaptcha-v3)
   - [FunCaptcha](#funcaptcha)
   - [GeeTest](#geetest)
+  - [GeeTestV4](#geetestv4)
   - [hCaptcha](#hcaptcha)
   - [KeyCaptcha](#keycaptcha)
   - [Capy](#capy)
@@ -19,6 +20,11 @@ The easiest way to quickly integrate [2Captcha] captcha solving service into you
   - [Canvas](#canvas)
   - [ClickCaptcha](#clickcaptcha)
   - [Rotate](#rotate)
+  - [Audio](#audio)
+  - [Yandex](#yandex)
+  - [Lemin](#lemin)
+  - [Turnstile](#turnstile)
+  - [AmazonWaf](#amazonwaf)
 - [Other methods](#other-methods)
   - [send / getResult](#send--getresult)
   - [balance](#balance)
@@ -133,6 +139,16 @@ $result = $solver->geetest([
     'url'       => 'https://www.site.com/page/',
 ]);
 ```
+### GeeTestV4
+Method to solve GeeTest V4 puzzle captcha. Returns a set of tokens as JSON.
+```php
+$result = $solver->geetest_v4([
+    'captchaId' => '72bf15796d0b69c43867452fea615052',
+    'apiServer' => 'api.geetest.com',
+    'challenge' => '12345678abc90123d45678ef90123a456b',
+    'url'       => 'https://mysite.com/captcha.html',
+]);
+```
 ### hCaptcha
 Use this method to solve hCaptcha challenge. Returns a token to bypass captcha.
 ```php
@@ -180,6 +196,46 @@ $result = $solver->coordinates('path/to/captcha.jpg');
 This method can be used to solve a captcha that asks to rotate an object. Mostly used to bypass FunCaptcha. Returns the rotation angle.
 ```php
 $result = $solver->rotate('path/to/captcha.jpg');
+```
+### Audio
+This method can be used to solve a audio captcha
+```php
+$result = $solver->solveaudio('path/to/audio.mp3');
+```
+### Yandex
+Use this method to solve Yandex and obtain a token to bypass the protection.
+```php
+$result = $solver->yandex([
+    'sitekey' => 'Y5Lh0tiycconMJGsFd3EbbuNKSp1yaZESUOIHfeV',
+    'url'     => 'https://rutube.ru',
+]);
+```
+### Lemin
+Use this method to solve Lemin and obtain a token to bypass the protection.
+```php
+$result = $solver->lemin([
+    'captchaId' => 'CROPPED_d3d4d56_73ca4008925b4f83a8bed59c2dd0df6d',
+    'apiServer' => 'api.leminnow.com',
+    'url'       => 'http://sat2.aksigorta.com.tr',
+]);
+```
+### Turnstile
+Use this method to solve Turnstile and obtain a token to bypass the protection.
+```php
+$result = $solver->turnstile([
+    'sitekey' => '0x4AAAAAAAChNiVJM_WtShFf',
+    'url'     => 'https://ace.fusionist.io',
+]);
+```
+### AmazonWaf
+Use this method to solve AmazonWaf and obtain a token to bypass the protection.
+```php
+$result = $solver->amazon_waf([
+    'sitekey' => 'AQIDAHjcYu/GjX+QlghicBgQ/7bFaQZ+m5FKCMDnO+vTbNg96AF5H1K/siwSLK7RfstKtN5bAAAAfjB8BgkqhkiG9w0BBwagbzBtAgEAMGgGCSqGSIb3DQEHATAeBglg',
+    'url'     => 'https://non-existent-example.execute-api.us-east-1.amazonaws.com',
+    'iv'      => 'test_iv',
+    'context' => 'test_context'
+]);
 ```
 
 ## Other methods
