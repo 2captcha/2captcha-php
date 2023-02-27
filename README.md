@@ -20,6 +20,7 @@ The easiest way to quickly integrate [2Captcha] captcha solving service into you
   - [ClickCaptcha](#clickcaptcha)
   - [Rotate](#rotate)
   - [Audio](#audio)
+  - [Yandex](#yandex)
 - [Other methods](#other-methods)
   - [send / getResult](#send--getresult)
   - [balance](#balance)
@@ -186,6 +187,14 @@ $result = $solver->rotate('path/to/captcha.jpg');
 This method can be used to solve a audio captcha
 ```php
 $result = $solver->solveaudio('path/to/audio.mp3');
+```
+### Yandex
+Use this method to solve Yandex and obtain a token to bypass the protection.
+```php
+$result = $solver->yandex([
+    'sitekey' => 'Y5Lh0tiycconMJGsFd3EbbuNKSp1yaZESUOIHfeV',
+    'url'     => 'https://rutube.ru',
+]);
 ```
 
 ## Other methods
