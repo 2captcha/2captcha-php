@@ -12,6 +12,7 @@ The easiest way to quickly integrate [2Captcha] captcha solving service into you
   - [ReCaptcha v3](#recaptcha-v3)
   - [FunCaptcha](#funcaptcha)
   - [GeeTest](#geetest)
+  - [GeeTestV4](#geetestv4)
   - [hCaptcha](#hcaptcha)
   - [KeyCaptcha](#keycaptcha)
   - [Capy](#capy)
@@ -133,6 +134,16 @@ $result = $solver->geetest([
     'gt'        => 'f1ab2cdefa3456789012345b6c78d90e',
     'challenge' => '12345678abc90123d45678ef90123a456b',
     'url'       => 'https://www.site.com/page/',
+]);
+```
+### GeeTestV4
+Method to solve GeeTest V4 puzzle captcha. Returns a set of tokens as JSON.
+```php
+$result = $solver->geetest_v4([
+    'captchaId' => '72bf15796d0b69c43867452fea615052',
+    'apiServer' => 'api.geetest.com',
+    'challenge' => '12345678abc90123d45678ef90123a456b',
+    'url'       => 'https://mysite.com/captcha.html',
 ]);
 ```
 ### hCaptcha
