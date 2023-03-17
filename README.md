@@ -144,7 +144,6 @@ Method to solve GeeTest V4 puzzle captcha. Returns a set of tokens as JSON.
 ```php
 $result = $solver->geetest_v4([
     'captchaId' => '72bf15796d0b69c43867452fea615052',
-    'apiServer' => 'api.geetest.com',
     'challenge' => '12345678abc90123d45678ef90123a456b',
     'url'       => 'https://mysite.com/captcha.html',
 ]);
