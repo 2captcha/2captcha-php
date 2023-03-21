@@ -436,7 +436,7 @@ class TwoCaptcha
      * @throws TimeoutException
      * @throws ValidationException     
      */
-    public function solveaudio($captcha){
+    public function audio($captcha){
         if (is_string($captcha)) {
             if (!file_exists($captcha)) {
                 throw new ValidationException('File not found (' . $captcha . ')');
@@ -449,7 +449,7 @@ class TwoCaptcha
             ];
         }       
         
-        $captcha['method'] = 'solveaudio';
+        $captcha['method'] = 'audio';
         return $this->solve($captcha);
     }
 

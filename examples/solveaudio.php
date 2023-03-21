@@ -7,7 +7,7 @@ require(__DIR__ . '/../src/autoloader.php');
 $solver = new \TwoCaptcha\TwoCaptcha('YOUR_API_KEY');
 
 try {
-    $result = $solver->solveaudio(__DIR__ . '/audio/audio-en.mp3');
+    $result = $solver->audio(__DIR__ . '/audio/audio-en.mp3');
 } catch (\Exception $e) {
     die($e->getMessage());
 }

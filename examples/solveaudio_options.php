@@ -10,7 +10,7 @@ $solver = new \TwoCaptcha\TwoCaptcha([
 ]);
 
 try {
-    $result = $solver->solveaudio([
+    $result = $solver->audio([
         'body' => base64_encode(file_get_contents(__DIR__ . '/audio/audio-ru.mp3')),
         'lang'     => 'ru',
     ]);
