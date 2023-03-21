@@ -19,7 +19,8 @@
         "2captcha.com",
         "lemin",
         "cloudflare turnstile",
-        "amazon waf"
+        "amazon waf",
+        "audio captcha"
     ],
     "license": "MIT",
     "authors": [
