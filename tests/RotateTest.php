@@ -10,64 +10,13 @@ class RotateTest extends AbstractWrapperTestCase
     private $img2 = __DIR__ . '/../examples/images/rotate_2.jpg';
     private $img3 = __DIR__ . '/../examples/images/rotate_3.jpg';
 
-    public function testSingleFile()
+    public function testFile()
     {
         $this->checkIfCorrectParamsSendAndResultReturned([
-            'params'     => $this->img,
-            'sendParams' => ['method' => 'rotatecaptcha'],
-            'sendFiles'  => ['file_1' => $this->img],
-        ]);
-    }
-
-    public function testSingleFileParameter()
-    {
-        $this->checkIfCorrectParamsSendAndResultReturned([
-            'params'     => ['file' => $this->img],
-            'sendParams' => ['method' => 'rotatecaptcha'],
-            'sendFiles'  => ['file_1' => $this->img],
-        ]);
-    }
-
-    public function testFilesList()
-    {
-        $files = [
-            $this->img,
-            $this->img2,
-            $this->img3,
-        ];
-
-        $sendFiles = [
-            'file_1' => $this->img,
-            'file_2' => $this->img2,
-            'file_3' => $this->img3,
-        ];
-
-        $this->checkIfCorrectParamsSendAndResultReturned([
-            'params'     => $files,
-            'sendParams' => ['method' => 'rotatecaptcha'],
-            'sendFiles'  => $sendFiles,
-        ]);
-    }
-
-    public function testFilesListParameter()
-    {
-        $files = [
-            $this->img,
-            $this->img2,
-            $this->img3,
-        ];
-
-        $sendFiles = [
-            'file_1' => $this->img,
-            'file_2' => $this->img2,
-            'file_3' => $this->img3,
-        ];
-
-        $this->checkIfCorrectParamsSendAndResultReturned([
-            'params'     => ['files' => $files],
-            'sendParams' => ['method' => 'rotatecaptcha'],
-            'sendFiles'  => $sendFiles,
-        ]);
+            'params'     => ['base64' => '...'],
+            'sendParams' => ['method' => 'rotatecaptcha', 'body' => '...'],
+            'sendFiles'  => [],
+        ]);        
     }
 
     public function testAllParameters()
@@ -75,7 +24,7 @@ class RotateTest extends AbstractWrapperTestCase
         $hintImg = __DIR__ . '/../examples/images/grid_hint.jpg';
 
         $params = [
-            'file'     => $this->img,
+            'base64' => '...',
             'angle'    => 40,
             'lang'     => 'en',
             'hintImg'  => $hintImg,
@@ -87,10 +36,10 @@ class RotateTest extends AbstractWrapperTestCase
             'angle'            => 40,
             'lang'             => 'en',
             'textinstructions' => 'Put the images in the correct way up',
+            'body' => '...'
         ];
 
         $sendFiles = [
-            'file_1'          => $this->img,
             'imginstructions' => $hintImg,
         ];
 

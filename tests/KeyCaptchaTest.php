@@ -14,6 +14,10 @@ class KeyCaptchaTest extends AbstractWrapperTestCase
             's_s_c_web_server_sign'  => '9006dc725760858e4c0715b835472f22-pz-',
             's_s_c_web_server_sign2' => '2ca3abe86d90c6142d5571db98af6714',
             'url'                    => 'https://www.keycaptcha.ru/demo-magnetic/',
+            'proxy'     => [
+                'type' => 'HTTPS',
+                'uri'  => 'username:str0ngP@$$W0rd@1.2.3.4:4321',
+            ]
         ];
 
         $sendParams = [
@@ -23,6 +27,8 @@ class KeyCaptchaTest extends AbstractWrapperTestCase
             's_s_c_web_server_sign'  => '9006dc725760858e4c0715b835472f22-pz-',
             's_s_c_web_server_sign2' => '2ca3abe86d90c6142d5571db98af6714',
             'pageurl'                => 'https://www.keycaptcha.ru/demo-magnetic/',
+            'proxy'                  => 'username:str0ngP@$$W0rd@1.2.3.4:4321',
+            'proxytype'              => 'HTTPS'              
         ];
 
         $this->checkIfCorrectParamsSendAndResultReturned([
