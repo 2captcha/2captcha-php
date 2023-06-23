@@ -19,7 +19,6 @@ try {
     $result = $solver->geetest_v4([
         'captchaId' => '72bf15796d0b69c43867452fea615052',
         'apiServer' => 'api.geetest.com',
-        'challenge' => $challenge,
         'url'       => 'https://mysite.com/captcha.html',
         'proxy'     => [
             'type' => 'HTTPS',
