@@ -24,7 +24,8 @@ class LeminTest extends AbstractWrapperTestCase
             'api_server' => 'api.leminnow.com',
             'pageurl'    => 'http://sat2.aksigorta.com.tr',
             'proxy'      => 'username:str0ngP@$$W0rd@1.2.3.4:4321',
-            'proxytype'  => 'HTTPS'                 
+            'proxytype'  => 'HTTPS',
+            'soft_id'    => '4585',
         ];
 
         $this->checkIfCorrectParamsSendAndResultReturned([

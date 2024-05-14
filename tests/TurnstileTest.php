@@ -22,7 +22,8 @@ class TurnstileTest extends AbstractWrapperTestCase
             'sitekey'    => '0x4AAAAAAAChNiVJM_WtShFf',
             'pageurl'    => 'https://ace.fusionist.io',
             'proxy'      => 'username:str0ngP@$$W0rd@1.2.3.4:4321',
-            'proxytype'  => 'HTTPS'                 
+            'proxytype'  => 'HTTPS',
+            'soft_id'    => '4585',
         ];
 
         $this->checkIfCorrectParamsSendAndResultReturned([

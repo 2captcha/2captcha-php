@@ -10,7 +10,7 @@ class TextTest extends AbstractWrapperTestCase
     {
         $this->checkIfCorrectParamsSendAndResultReturned([
             'params'     => 'Today is monday?',
-            'sendParams' => ['method' => 'post', 'textcaptcha' => 'Today is monday?'],
+            'sendParams' => ['method' => 'post', 'textcaptcha' => 'Today is monday?','soft_id' => '4585'],
             'sendFiles'  => [],
         ]);
     }
@@ -19,7 +19,7 @@ class TextTest extends AbstractWrapperTestCase
     {
         $this->checkIfCorrectParamsSendAndResultReturned([
             'params'     => ['text' => 'Today is monday?'],
-            'sendParams' => ['method' => 'post', 'textcaptcha' => 'Today is monday?'],
+            'sendParams' => ['method' => 'post', 'textcaptcha' => 'Today is monday?','soft_id' => '4585'],
             'sendFiles'  => [],
         ]);
     }
@@ -28,7 +28,7 @@ class TextTest extends AbstractWrapperTestCase
     {
         $this->checkIfCorrectParamsSendAndResultReturned([
             'params'     => ['text' => 'Today is monday?', 'lang' => 'en'],
-            'sendParams' => ['method' => 'post', 'textcaptcha' => 'Today is monday?', 'lang' => 'en'],
+            'sendParams' => ['method' => 'post', 'textcaptcha' => 'Today is monday?', 'lang' => 'en','soft_id' => '4585'],
             'sendFiles'  => [],
         ]);
     }

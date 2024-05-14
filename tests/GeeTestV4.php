@@ -22,9 +22,10 @@ class GeeTestV4 extends AbstractWrapperTestCase
             'method'     => 'geetest_v4',
             'api_server' => 'api-na.geetest.com',
             'pageurl'    => 'https://launches.endclothing.com/distil_r_captcha.html',
-            'captcha_id'=> '72bf15796d0b69c43867452fea615052',
-            'proxy'     => 'username:str0ngP@$$W0rd@1.2.3.4:4321',
-            'proxytype' => 'HTTPS'            
+            'captcha_id' => '72bf15796d0b69c43867452fea615052',
+            'proxy'      => 'username:str0ngP@$$W0rd@1.2.3.4:4321',
+            'proxytype'  => 'HTTPS',
+            'soft_id'    => '4585',
         ];
 
  

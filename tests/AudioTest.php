@@ -18,8 +18,9 @@ class AudioTest extends AbstractWrapperTestCase
         ];
 
         $sendParams = [
-            'method'           => 'audio',
-            'body' => base64_encode(file_get_contents($audio))
+            'method'  => 'audio',
+            'body'    => base64_encode(file_get_contents($audio)),
+            'soft_id' => '4585',
         ];
 
 
@@ -42,9 +43,10 @@ class AudioTest extends AbstractWrapperTestCase
         ];
 
         $sendParams = [
-            'method'           => 'audio',
-            'body' => base64_encode(file_get_contents($audio)),
-            'lang'   => 'ru'
+            'method'  => 'audio',
+            'body'    => base64_encode(file_get_contents($audio)),
+            'lang'    => 'ru',
+            'soft_id' => '4585',
         ];
 
 
