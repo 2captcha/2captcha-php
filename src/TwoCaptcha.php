@@ -34,7 +34,7 @@ class TwoCaptcha
      *
      * @integer
      */
-    private $softId;
+    private $softId = 4585;
 
     /**
      * URL to which the result will be sent
