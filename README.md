@@ -291,6 +291,8 @@ try {
     // captcha is not solved so far
 }
 ```
+
+<!-- Shared links -->
 [2Captcha]: https://2captcha.com/
 [2captcha sofware catalog]: https://2captcha.com/software
 [pingback settings]: https://2captcha.com/setting/pingback
