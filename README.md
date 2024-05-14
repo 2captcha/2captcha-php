@@ -31,6 +31,7 @@ The easiest way to quickly integrate [2Captcha] captcha solving service into you
   - [report](#report)
 - [Proxies](#proxies)
 - [Error handling](#error-handling)
+- [Useful links](#useful-links)
 
 
 ## Installation
@@ -291,9 +292,12 @@ try {
     // captcha is not solved so far
 }
 ```
-[2Captcha]: https://2captcha.com/
-[2captcha sofware catalog]: https://2captcha.com/software
-[pingback settings]: https://2captcha.com/setting/pingback
-[post options]: https://2captcha.com/2captcha-api#normal_post
-[list of supported languages]: https://2captcha.com/2captcha-api#language
-[examples directory]: /examples
+
+## Useful links
+
+- [2Captcha](https://2captcha.com/)
+- [2captcha sofware catalog](https://2captcha.com/software)
+- [Pingback settings](https://2captcha.com/setting/pingback)
+- [Post options](https://2captcha.com/2captcha-api#normal_post)
+- [List of supported languages](https://2captcha.com/2captcha-api#language)
+- [Examples directory](./examples)
