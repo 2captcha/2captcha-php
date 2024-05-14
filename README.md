@@ -29,6 +29,7 @@ The easiest way to quickly integrate [2Captcha] captcha solving service into you
   - [send / getResult](#send--getresult)
   - [balance](#balance)
   - [report](#report)
+- [Proxies](#proxies)
 - [Error handling](#error-handling)
 
 
@@ -257,6 +258,22 @@ Use this method to report good or bad captcha answer.
 ```php
 $solver->report($id, true); // captcha solved correctly
 $solver->report($id, false); // captcha solved incorrectly
+```
+## Proxies
+You can pass your proxy as an additional argument for methods: recaptcha, funcaptcha, geetest, geetest v4, hcaptcha, keycaptcha, capy puzzle, lemin, turnstile, amazon waf and etc. The proxy will be forwarded to the API to solve the captcha.
+
+We have our own proxies that we can offer you. [Buy residential proxies](https://2captcha.com/proxy/residential-proxies) for avoid restrictions and blocks. [Quick start](https://2captcha.com/proxy?openAddTrafficModal=true).
+
+Example solving reCAPTCHA V2 using proxy:
+```php
+$result = $solver->recaptcha([
+    'sitekey'   => '6Le-wvkSVVABCPBMRTvw0Q4Muexq1bi0DJwx_mJ-',
+    'url'       => 'https://mysite.com/page/with/recaptcha',
+    'proxy'     => [
+        'type' => 'HTTPS',
+        'uri'  => 'login:password@IP_address:PORT',
+    ],
+]);
 ```
 
 ## Error handling
