@@ -28,7 +28,8 @@ class KeyCaptchaTest extends AbstractWrapperTestCase
             's_s_c_web_server_sign2' => '2ca3abe86d90c6142d5571db98af6714',
             'pageurl'                => 'https://www.keycaptcha.ru/demo-magnetic/',
             'proxy'                  => 'username:str0ngP@$$W0rd@1.2.3.4:4321',
-            'proxytype'              => 'HTTPS'              
+            'proxytype'              => 'HTTPS',
+            'soft_id'                => '4585',
         ];
 
         $this->checkIfCorrectParamsSendAndResultReturned([

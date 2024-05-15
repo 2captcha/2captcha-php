@@ -26,7 +26,8 @@ class AmazonWafTest extends AbstractWrapperTestCase
             'iv'         => 'test_iv',
             'context'    => 'test_context',
             'proxy'      => 'username:str0ngP@$$W0rd@1.2.3.4:4321',
-            'proxytype'  => 'HTTPS'                 
+            'proxytype'  => 'HTTPS',
+            'soft_id'    => '4585',
         ];
 
         $this->checkIfCorrectParamsSendAndResultReturned([

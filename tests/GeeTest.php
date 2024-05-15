@@ -25,8 +25,9 @@ class GeeTest extends AbstractWrapperTestCase
             'api_server' => 'api-na.geetest.com',
             'challenge'  => '69A21A01-CC7B-B9C6-0F9A-E7FA06677FFC',
             'pageurl'    => 'https://launches.endclothing.com/distil_r_captcha.html',
-            'proxy'     => 'username:str0ngP@$$W0rd@1.2.3.4:4321',
-            'proxytype' => 'HTTPS'                 
+            'proxy'      => 'username:str0ngP@$$W0rd@1.2.3.4:4321',
+            'proxytype'  => 'HTTPS',
+            'soft_id'    => '4585',
         ];
 
         $this->checkIfCorrectParamsSendAndResultReturned([

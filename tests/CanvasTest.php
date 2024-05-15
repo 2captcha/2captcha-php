@@ -22,7 +22,7 @@ class CanvasTest extends AbstractWrapperTestCase
     {
         $this->checkIfCorrectParamsSendAndResultReturned([
             'params'     => ['file' => $this->captchaImg, 'hintText' => $this->hintText],
-            'sendParams' => ['method' => 'post', 'canvas' => 1, 'recaptcha' => 1, 'textinstructions' => $this->hintText],
+            'sendParams' => ['method' => 'post', 'canvas' => 1, 'recaptcha' => 1, 'textinstructions' => $this->hintText, 'soft_id' => '4585'],
             'sendFiles'  => ['file' => $this->captchaImg],
         ]);
     }
@@ -31,7 +31,7 @@ class CanvasTest extends AbstractWrapperTestCase
     {
         $this->checkIfCorrectParamsSendAndResultReturned([
             'params'     => ['base64' => '...', 'hintText' => $this->hintText],
-            'sendParams' => ['method' => 'base64', 'canvas' => 1, 'body' => '...', 'recaptcha' => 1, 'textinstructions' => $this->hintText],
+            'sendParams' => ['method' => 'base64', 'canvas' => 1, 'body' => '...', 'recaptcha' => 1, 'textinstructions' => $this->hintText, 'soft_id' => '4585'],
             'sendFiles'  => [],
         ]);
     }
@@ -57,6 +57,7 @@ class CanvasTest extends AbstractWrapperTestCase
             'lang'             => 'en',
             'recaptcha'        => 1,
             'textinstructions' => $this->hintText,
+            'soft_id'          => '4585',
         ];
 
         $sendFiles = [

@@ -12,7 +12,7 @@ class CoordinatesTest extends AbstractWrapperTestCase
     {
         $this->checkIfCorrectParamsSendAndResultReturned([
             'params'     => $this->captchaImg,
-            'sendParams' => ['method' => 'post', 'coordinatescaptcha' => 1],
+            'sendParams' => ['method' => 'post', 'coordinatescaptcha' => 1, 'soft_id' => '4585'],
             'sendFiles'  => ['file' => $this->captchaImg],
         ]);
     }
@@ -21,7 +21,7 @@ class CoordinatesTest extends AbstractWrapperTestCase
     {
         $this->checkIfCorrectParamsSendAndResultReturned([
             'params'     => ['file' => $this->captchaImg],
-            'sendParams' => ['method' => 'post', 'coordinatescaptcha' => 1],
+            'sendParams' => ['method' => 'post', 'coordinatescaptcha' => 1,'soft_id' => '4585'],
             'sendFiles'  => ['file' => $this->captchaImg],
         ]);
     }
@@ -30,7 +30,7 @@ class CoordinatesTest extends AbstractWrapperTestCase
     {
         $this->checkIfCorrectParamsSendAndResultReturned([
             'params'     => ['base64' => '...'],
-            'sendParams' => ['method' => 'base64', 'coordinatescaptcha' => 1, 'body' => '...'],
+            'sendParams' => ['method' => 'base64', 'coordinatescaptcha' => 1, 'body' => '...','soft_id' => '4585'],
             'sendFiles'  => [],
         ]);
     }
@@ -51,6 +51,7 @@ class CoordinatesTest extends AbstractWrapperTestCase
             'coordinatescaptcha' => 1,
             'lang'               => 'en',
             'textinstructions'   => 'Select all images with an Orange',
+            'soft_id'            => '4585',
         ];
 
         $sendFiles = [
