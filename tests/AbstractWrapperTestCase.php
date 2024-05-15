@@ -53,7 +53,7 @@ abstract class AbstractWrapperTestCase extends TestCase
         $result = $solver->{$this->method}($data['params']);
 
         $this->assertIsObject($result);
-        $this->assertObjectHasAttribute('code', $result);
+        $this->assertObjectHasProperty('code', $result);
         $this->assertEquals($result->code, $code);
     }
 
