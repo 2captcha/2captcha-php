@@ -28,7 +28,7 @@ class GeeTestV4 extends AbstractWrapperTestCase
             'soft_id'    => '4585',
         ];
 
- 
+
 
         $this->checkIfCorrectParamsSendAndResultReturned([
             'params'     => $params,
