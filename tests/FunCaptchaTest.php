@@ -19,7 +19,7 @@ class FunCaptchaTest extends AbstractWrapperTestCase
             'proxy'     => [
                 'type' => 'HTTPS',
                 'uri'  => 'username:str0ngP@$$W0rd@1.2.3.4:4321',
-            ]            
+            ]
         ];
 
         $sendParams = [

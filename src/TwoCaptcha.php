@@ -189,7 +189,7 @@ class TwoCaptcha
 
         return $this->solve($captcha, ['timeout' => $this->recaptchaTimeout]);
     }
-    
+
     /**
      * Wrapper for solving Turnstile
      *
@@ -274,7 +274,7 @@ class TwoCaptcha
 
         return $this->solve($captcha);
     }
-    
+
 
     /**
      * Wrapper for solving hCaptcha
@@ -308,7 +308,7 @@ class TwoCaptcha
         $captcha['method'] = 'lemin';
 
         return $this->solve($captcha);
-    }    
+    }
 
     /**
      * Wrapper for solving KeyCaptcha
@@ -395,8 +395,8 @@ class TwoCaptcha
 
         if ( empty($captcha['hintText']) && empty($captcha['hintImg']) ) {
             throw new ValidationException('At least one of parameters: hintText or hintImg required!');
-        } 
-        
+        }
+
         return $this->solve($captcha);
     }
 
@@ -434,21 +434,21 @@ class TwoCaptcha
      * @throws ApiException
      * @throws NetworkException
      * @throws TimeoutException
-     * @throws ValidationException     
+     * @throws ValidationException
      */
     public function audio($captcha){
         if (is_string($captcha)) {
             if (!file_exists($captcha)) {
                 throw new ValidationException('File not found (' . $captcha . ')');
-            }            
+            }
             $body = file_get_contents($captcha);
             $body = base64_encode($body);
 
             $captcha = [
                 'body' => $body,
             ];
-        }       
-        
+        }
+
         $captcha['method'] = 'audio';
         return $this->solve($captcha);
     }
@@ -468,9 +468,9 @@ class TwoCaptcha
         if (is_string($captcha)) {
             if (!file_exists($captcha)) {
                 throw new ValidationException('File not found (' . $captcha . ')');
-            }                  
+            }
             $body = file_get_contents($captcha);
-            $body = base64_encode($body);            
+            $body = base64_encode($body);
             $captcha = [
                 'body' => $body,
             ];

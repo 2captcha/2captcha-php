@@ -18,7 +18,7 @@ try {
         'proxy'   => [
             'type' => 'HTTPS',
             'uri'  => 'login:password@IP_address:PORT',
-        ],        
+        ],
     ]);
 } catch (\Exception $e) {
     die($e->getMessage());
