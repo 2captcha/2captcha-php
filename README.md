@@ -40,6 +40,7 @@ Examples of API requests for different captcha types are available on the [PHP c
     - [Tencent](#tencent)
     - [MTCaptcha](#mtcaptcha)
     - [Cutcaptcha](#cutcaptcha)
+    - [Friendly Captcha](#friendly-captcha)
   - [Other methods](#other-methods)
     - [send / getResult](#send--getresult)
     - [balance](#balance)
@@ -288,6 +289,19 @@ $result = $solver->cutcaptcha([
     'url'        => 'https://example.cc/foo/bar.html',
 ]);
 ```
+
+### Friendly Captcha
+
+Use this method to bypass Friendly Captcha.
+
+```php
+$result = $solver->friendly_captcha([
+    'sitekey' => '2FZFEVS1FZCGQ9',
+    'url'     => 'https://example.com/',
+]);
+```
+
+
 
 
 ## Other methods

@@ -395,6 +395,23 @@ class TwoCaptcha
         return $this->solve($captcha);
     }
 
+    /**
+     * Wrapper for solving Friendly Captcha
+     *
+     * @param $captcha
+     * @return \stdClass
+     * @throws ApiException
+     * @throws NetworkException
+     * @throws TimeoutException
+     * @throws ValidationException
+     */
+    public function friendly_captcha($captcha)
+    {
+        $captcha['method'] = 'friendly_captcha';
+
+        return $this->solve($captcha);
+    }
+
 
     /**
      * Wrapper for solving grid captcha
