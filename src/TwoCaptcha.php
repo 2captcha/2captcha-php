@@ -345,6 +345,25 @@ class TwoCaptcha
     }
 
     /**
+     * Wrapper for solving Tencent
+     *
+     * @param $captcha
+     * @return \stdClass
+     * @throws ApiException
+     * @throws NetworkException
+     * @throws TimeoutException
+     * @throws ValidationException
+     */
+    public function tencent($captcha)
+    {
+        $captcha['method'] = 'tencent';
+
+        return $this->solve($captcha);
+    }
+
+
+
+    /**
      * Wrapper for solving grid captcha
      *
      * @param $captcha
@@ -800,6 +819,9 @@ class TwoCaptcha
             ],
             'capy' => [
                 'sitekey' => 'captchakey',
+            ],
+            'tencent' => [
+                'sitekey' => 'app_id',
             ],
         ];
 
