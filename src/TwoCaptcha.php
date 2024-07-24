@@ -412,6 +412,23 @@ class TwoCaptcha
         return $this->solve($captcha);
     }
 
+    /**
+     * Wrapper for solving atbCAPTCHA
+     *
+     * @param $captcha
+     * @return \stdClass
+     * @throws ApiException
+     * @throws NetworkException
+     * @throws TimeoutException
+     * @throws ValidationException
+     */
+    public function atb_captcha($captcha)
+    {
+        $captcha['method'] = 'atb_captcha';
+
+        return $this->solve($captcha);
+    }
+
 
     /**
      * Wrapper for solving grid captcha
@@ -871,6 +888,9 @@ class TwoCaptcha
                 'sitekey' => 'captchakey',
             ],
             'tencent' => [
+                'sitekey' => 'app_id',
+            ],
+            'atb_captcha' => [
                 'sitekey' => 'app_id',
             ],
         ];

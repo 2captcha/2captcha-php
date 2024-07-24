@@ -41,6 +41,7 @@ Examples of API requests for different captcha types are available on the [PHP c
     - [MTCaptcha](#mtcaptcha)
     - [Cutcaptcha](#cutcaptcha)
     - [Friendly Captcha](#friendly-captcha)
+    - [atbCAPTCHA](#atbcaptcha)
   - [Other methods](#other-methods)
     - [send / getResult](#send--getresult)
     - [balance](#balance)
@@ -301,7 +302,17 @@ $result = $solver->friendly_captcha([
 ]);
 ```
 
+### atbCAPTCHA
 
+Use this method to bypass atbCAPTCHA.
+
+```php
+$result = $solver->atb_captcha([
+    'sitekey'     => 'af23e041b22d000a11e22a230fa8991c',
+    'api_server' => 'https://cap.aisecurius.com',
+    'url'        => 'https://example.com/',
+]);
+```
 
 
 ## Other methods
