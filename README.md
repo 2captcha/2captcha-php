@@ -15,9 +15,11 @@ Examples of API requests for different captcha types are available on the [PHP c
     - [Composer](#composer)
     - [Manual](#manual)
   - [Configuration](#configuration)
+    - [TwoCaptcha instance options](#twocaptcha-instance-options)
   - [Solve captcha](#solve-captcha)
+    - [Captcha options](#captcha-options)
     - [Normal Captcha](#normal-captcha)
-    - [Text](#text-captcha)
+    - [Text Captcha](#text-captcha)
     - [ReCaptcha v2](#recaptcha-v2)
     - [ReCaptcha v3](#recaptcha-v3)
     - [FunCaptcha](#funcaptcha)
@@ -26,7 +28,7 @@ Examples of API requests for different captcha types are available on the [PHP c
     - [hCaptcha](#hcaptcha)
     - [KeyCaptcha](#keycaptcha)
     - [Capy](#capy)
-    - [Grid (ReCaptcha V2 Old Method)](#grid)
+    - [Grid](#grid)
     - [Canvas](#canvas)
     - [ClickCaptcha](#clickcaptcha)
     - [Rotate](#rotate)
@@ -35,14 +37,15 @@ Examples of API requests for different captcha types are available on the [PHP c
     - [Lemin](#lemin)
     - [Turnstile](#turnstile)
     - [AmazonWaf](#amazonwaf)
+    - [Tencent](#tencent)
   - [Other methods](#other-methods)
     - [send / getResult](#send--getresult)
     - [balance](#balance)
     - [report](#report)
   - [Proxies](#proxies)
   - [Error handling](#error-handling)
-- [Get in touch](#get-in-touch)
-- [Join the team 👪](#join-the-team-)
+  - [Get in touch](#get-in-touch)
+  - [Join the team 👪](#join-the-team-)
 
 
 ## Installation
@@ -248,6 +251,18 @@ $result = $solver->amazon_waf([
     'context' => 'test_context'
 ]);
 ```
+
+### Tencent
+
+Use this method to bypass Tencent.
+
+```php
+$result = $solver->tencent([
+    'sitekey' => '123456789',
+    'url'     => 'https://www.site.com/page/',
+]);
+```
+
 
 ## Other methods
 
