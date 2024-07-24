@@ -42,6 +42,7 @@ Examples of API requests for different captcha types are available on the [PHP c
     - [Cutcaptcha](#cutcaptcha)
     - [Friendly Captcha](#friendly-captcha)
     - [atbCAPTCHA](#atbcaptcha)
+    - [DataDome](#datadome)
   - [Other methods](#other-methods)
     - [send / getResult](#send--getresult)
     - [balance](#balance)
@@ -313,6 +314,23 @@ $result = $solver->atb_captcha([
     'url'        => 'https://example.com/',
 ]);
 ```
+
+### DataDome
+
+Use this method to bypass DataDome.
+
+```php
+$result = $solver->datadome([
+    'captcha_url'     => 'af23e041b22d000a11e22a230fa8991c',
+    'userAgent' => 'https://cap.aisecurius.com',
+    'url'        => 'https://example.com/',
+    'proxy'       => [
+        'type' => 'HTTPS',
+        'uri'  => 'username:str0ngP@$$W0rd@1.2.3.4:4321',
+    ],
+]);
+```
+
 
 
 ## Other methods

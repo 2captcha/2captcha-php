@@ -431,6 +431,24 @@ class TwoCaptcha
 
 
     /**
+     * Wrapper for solving DataDome
+     *
+     * @param $captcha
+     * @return \stdClass
+     * @throws ApiException
+     * @throws NetworkException
+     * @throws TimeoutException
+     * @throws ValidationException
+     */
+    public function datadome($captcha)
+    {
+        $captcha['method'] = 'datadome';
+
+        return $this->solve($captcha);
+    }
+
+
+    /**
      * Wrapper for solving grid captcha
      *
      * @param $captcha
