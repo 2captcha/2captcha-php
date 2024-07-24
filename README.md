@@ -1,36 +1,48 @@
+<a href="https://github.com/2captcha/2captcha-python"><img src="https://github.com/user-attachments/assets/37e1d860-033b-4cf3-a158-468fc6b4debc" width="82" height="30"></a>
+<a href="https://github.com/2captcha/2captcha-javascript"><img src="https://github.com/user-attachments/assets/4d3b4541-34b2-4ed2-a687-d694ce67e5a6" width="36" height="30"></a>
+<a href="https://github.com/2captcha/2captcha-go"><img src="https://github.com/user-attachments/assets/ab22182e-6cb2-41fa-91f4-d5e89c6d7c6f" width="63" height="30"></a>
+<a href="https://github.com/2captcha/2captcha-ruby"><img src="https://github.com/user-attachments/assets/0270d56f-79b0-4c95-9b09-4de89579914b" width="75" height="30"></a>
+<a href="https://github.com/2captcha/2captcha-cpp"><img src="https://github.com/user-attachments/assets/36de8512-acfd-44fb-bb1f-b7c793a3f926" width="45" height="30"></a>
+<a href="https://github.com/2captcha/2captcha-php"><img src="https://github.com/user-attachments/assets/c27d7db5-c20f-47c1-b252-96ee76503b9e" width="52" height="30"></a>
+<a href="https://github.com/2captcha/2captcha-java"><img src="https://github.com/user-attachments/assets/a3d923f6-4fec-4c07-ac50-e20da6370911" width="50" height="30"></a>
+<a href="https://github.com/2captcha/2captcha-csharp"><img src="https://github.com/user-attachments/assets/f4d449de-780b-49ed-bb0a-b70c82ec4b32" width="38" height="30"></a>
+
 # PHP Module for 2Captcha API
 The easiest way to quickly integrate [2Captcha] captcha solving service into your code to automate solving of any types of captcha.
-
-- [Installation](#installation)
-  - [Composer](#composer)
-  - [Manual](#manual)
-- [Configuration](#configuration)
-- [Solve captcha](#solve-captcha)
-  - [Normal Captcha](#normal-captcha)
-  - [Text](#text-captcha)
-  - [ReCaptcha v2](#recaptcha-v2)
-  - [ReCaptcha v3](#recaptcha-v3)
-  - [FunCaptcha](#funcaptcha)
-  - [GeeTest](#geetest)
-  - [GeeTestV4](#geetestv4)
-  - [hCaptcha](#hcaptcha)
-  - [KeyCaptcha](#keycaptcha)
-  - [Capy](#capy)
-  - [Grid (ReCaptcha V2 Old Method)](#grid)
-  - [Canvas](#canvas)
-  - [ClickCaptcha](#clickcaptcha)
-  - [Rotate](#rotate)
-  - [Audio](#audio)
-  - [Yandex](#yandex)
-  - [Lemin](#lemin)
-  - [Turnstile](#turnstile)
-  - [AmazonWaf](#amazonwaf)
-- [Other methods](#other-methods)
-  - [send / getResult](#send--getresult)
-  - [balance](#balance)
-  - [report](#report)
-- [Proxies](#proxies)
-- [Error handling](#error-handling)
+Examples of API requests for different captcha types are available on the [PHP captcha solver](https://2captcha.com/lang/php) page.
+- [PHP Module for 2Captcha API](#php-module-for-2captcha-api)
+  - [Installation](#installation)
+    - [Composer](#composer)
+    - [Manual](#manual)
+  - [Configuration](#configuration)
+  - [Solve captcha](#solve-captcha)
+    - [Normal Captcha](#normal-captcha)
+    - [Text](#text-captcha)
+    - [ReCaptcha v2](#recaptcha-v2)
+    - [ReCaptcha v3](#recaptcha-v3)
+    - [FunCaptcha](#funcaptcha)
+    - [GeeTest](#geetest)
+    - [GeeTestV4](#geetestv4)
+    - [hCaptcha](#hcaptcha)
+    - [KeyCaptcha](#keycaptcha)
+    - [Capy](#capy)
+    - [Grid (ReCaptcha V2 Old Method)](#grid)
+    - [Canvas](#canvas)
+    - [ClickCaptcha](#clickcaptcha)
+    - [Rotate](#rotate)
+    - [Audio](#audio)
+    - [Yandex](#yandex)
+    - [Lemin](#lemin)
+    - [Turnstile](#turnstile)
+    - [AmazonWaf](#amazonwaf)
+  - [Other methods](#other-methods)
+    - [send / getResult](#send--getresult)
+    - [balance](#balance)
+    - [report](#report)
+  - [Proxies](#proxies)
+  - [Error handling](#error-handling)
+- [Get in touch](#get-in-touch)
+- [Join the team 👪](#join-the-team-)
 
 
 ## Installation
@@ -291,6 +303,16 @@ try {
     // captcha is not solved so far
 }
 ```
+## Get in touch
+
+<a href="mailto:support@2captcha.com"><img src="https://github.com/user-attachments/assets/539df209-7c85-4fa5-84b4-fc22ab93fac7" width="80" height="30"></a>
+<a href="https://2captcha.com/support/tickets/new"><img src="https://github.com/user-attachments/assets/be044db5-2e67-46c6-8c81-04b78bd99650" width="81" height="30"></a>
+
+## Join the team 👪
+
+There are many ways to contribute, of which development is only one! Find your next job. Open positions: AI experts, scrapers, developers, technical support, and much more! 😍
+
+<a href="mailto:job@2captcha.com"><img src="https://github.com/user-attachments/assets/36d23ef5-7866-4841-8e17-261cc8a4e033" width="80" height="30"></a>
 
 <!-- Shared links -->
 [2Captcha]: https://2captcha.com/
