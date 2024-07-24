@@ -15,9 +15,11 @@ Examples of API requests for different captcha types are available on the [PHP c
     - [Composer](#composer)
     - [Manual](#manual)
   - [Configuration](#configuration)
+    - [TwoCaptcha instance options](#twocaptcha-instance-options)
   - [Solve captcha](#solve-captcha)
+    - [Captcha options](#captcha-options)
     - [Normal Captcha](#normal-captcha)
-    - [Text](#text-captcha)
+    - [Text Captcha](#text-captcha)
     - [ReCaptcha v2](#recaptcha-v2)
     - [ReCaptcha v3](#recaptcha-v3)
     - [FunCaptcha](#funcaptcha)
@@ -26,7 +28,7 @@ Examples of API requests for different captcha types are available on the [PHP c
     - [hCaptcha](#hcaptcha)
     - [KeyCaptcha](#keycaptcha)
     - [Capy](#capy)
-    - [Grid (ReCaptcha V2 Old Method)](#grid)
+    - [Grid](#grid)
     - [Canvas](#canvas)
     - [ClickCaptcha](#clickcaptcha)
     - [Rotate](#rotate)
@@ -35,14 +37,20 @@ Examples of API requests for different captcha types are available on the [PHP c
     - [Lemin](#lemin)
     - [Turnstile](#turnstile)
     - [AmazonWaf](#amazonwaf)
+    - [Tencent](#tencent)
+    - [MTCaptcha](#mtcaptcha)
+    - [Cutcaptcha](#cutcaptcha)
+    - [Friendly Captcha](#friendly-captcha)
+    - [atbCAPTCHA](#atbcaptcha)
+    - [DataDome](#datadome)
   - [Other methods](#other-methods)
     - [send / getResult](#send--getresult)
     - [balance](#balance)
     - [report](#report)
   - [Proxies](#proxies)
   - [Error handling](#error-handling)
-- [Get in touch](#get-in-touch)
-- [Join the team 👪](#join-the-team-)
+  - [Get in touch](#get-in-touch)
+  - [Join the team 👪](#join-the-team-)
 
 
 ## Installation
@@ -248,6 +256,82 @@ $result = $solver->amazon_waf([
     'context' => 'test_context'
 ]);
 ```
+
+### Tencent
+
+Use this method to bypass Tencent.
+
+```php
+$result = $solver->tencent([
+    'sitekey' => '123456789',
+    'url'     => 'https://www.site.com/page/',
+]);
+```
+
+
+### MTCaptcha
+
+Use this method to bypass MTCaptcha.
+
+```php
+$result = $solver->mt_captcha([
+    'sitekey' => 'MTPublic-KzqLY1cKH',
+    'url'     => 'https://2captcha.com/demo/mtcaptcha',
+]);
+```
+
+### Cutcaptcha
+
+Use this method to bypass Cutcaptcha.
+
+```php
+$result = $solver->cutcaptcha([
+    'misery_key' => 'a1488b66da00bf332a1488993a5443c79047e752',
+    'api_key'    => 'SAb83IIB',
+    'url'        => 'https://example.cc/foo/bar.html',
+]);
+```
+
+### Friendly Captcha
+
+Use this method to bypass Friendly Captcha.
+
+```php
+$result = $solver->friendly_captcha([
+    'sitekey' => '2FZFEVS1FZCGQ9',
+    'url'     => 'https://example.com/',
+]);
+```
+
+### atbCAPTCHA
+
+Use this method to bypass atbCAPTCHA.
+
+```php
+$result = $solver->atb_captcha([
+    'sitekey'     => 'af23e041b22d000a11e22a230fa8991c',
+    'api_server' => 'https://cap.aisecurius.com',
+    'url'        => 'https://example.com/',
+]);
+```
+
+### DataDome
+
+Use this method to bypass DataDome.
+
+```php
+$result = $solver->datadome([
+    'captcha_url'     => 'af23e041b22d000a11e22a230fa8991c',
+    'userAgent' => 'https://cap.aisecurius.com',
+    'url'        => 'https://example.com/',
+    'proxy'       => [
+        'type' => 'HTTPS',
+        'uri'  => 'username:str0ngP@$$W0rd@1.2.3.4:4321',
+    ],
+]);
+```
+
+
 
 ## Other methods
 

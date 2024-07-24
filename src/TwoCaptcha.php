@@ -345,6 +345,110 @@ class TwoCaptcha
     }
 
     /**
+     * Wrapper for solving Tencent
+     *
+     * @param $captcha
+     * @return \stdClass
+     * @throws ApiException
+     * @throws NetworkException
+     * @throws TimeoutException
+     * @throws ValidationException
+     */
+    public function tencent($captcha)
+    {
+        $captcha['method'] = 'tencent';
+
+        return $this->solve($captcha);
+    }
+
+    /**
+     * Wrapper for solving MTCaptcha
+     *
+     * @param $captcha
+     * @return \stdClass
+     * @throws ApiException
+     * @throws NetworkException
+     * @throws TimeoutException
+     * @throws ValidationException
+     */
+    public function mt_captcha($captcha)
+    {
+        $captcha['method'] = 'mt_captcha';
+
+        return $this->solve($captcha);
+    }
+
+    /**
+     * Wrapper for solving Cutcaptcha
+     *
+     * @param $captcha
+     * @return \stdClass
+     * @throws ApiException
+     * @throws NetworkException
+     * @throws TimeoutException
+     * @throws ValidationException
+     */
+    public function cutcaptcha($captcha)
+    {
+        $captcha['method'] = 'cutcaptcha';
+
+        return $this->solve($captcha);
+    }
+
+    /**
+     * Wrapper for solving Friendly Captcha
+     *
+     * @param $captcha
+     * @return \stdClass
+     * @throws ApiException
+     * @throws NetworkException
+     * @throws TimeoutException
+     * @throws ValidationException
+     */
+    public function friendly_captcha($captcha)
+    {
+        $captcha['method'] = 'friendly_captcha';
+
+        return $this->solve($captcha);
+    }
+
+    /**
+     * Wrapper for solving atbCAPTCHA
+     *
+     * @param $captcha
+     * @return \stdClass
+     * @throws ApiException
+     * @throws NetworkException
+     * @throws TimeoutException
+     * @throws ValidationException
+     */
+    public function atb_captcha($captcha)
+    {
+        $captcha['method'] = 'atb_captcha';
+
+        return $this->solve($captcha);
+    }
+
+
+    /**
+     * Wrapper for solving DataDome
+     *
+     * @param $captcha
+     * @return \stdClass
+     * @throws ApiException
+     * @throws NetworkException
+     * @throws TimeoutException
+     * @throws ValidationException
+     */
+    public function datadome($captcha)
+    {
+        $captcha['method'] = 'datadome';
+
+        return $this->solve($captcha);
+    }
+
+
+    /**
      * Wrapper for solving grid captcha
      *
      * @param $captcha
@@ -800,6 +904,12 @@ class TwoCaptcha
             ],
             'capy' => [
                 'sitekey' => 'captchakey',
+            ],
+            'tencent' => [
+                'sitekey' => 'app_id',
+            ],
+            'atb_captcha' => [
+                'sitekey' => 'app_id',
             ],
         ];
 
