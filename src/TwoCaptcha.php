@@ -378,6 +378,23 @@ class TwoCaptcha
         return $this->solve($captcha);
     }
 
+    /**
+     * Wrapper for solving Cutcaptcha
+     *
+     * @param $captcha
+     * @return \stdClass
+     * @throws ApiException
+     * @throws NetworkException
+     * @throws TimeoutException
+     * @throws ValidationException
+     */
+    public function cutcaptcha($captcha)
+    {
+        $captcha['method'] = 'cutcaptcha';
+
+        return $this->solve($captcha);
+    }
+
 
     /**
      * Wrapper for solving grid captcha

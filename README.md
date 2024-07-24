@@ -39,6 +39,7 @@ Examples of API requests for different captcha types are available on the [PHP c
     - [AmazonWaf](#amazonwaf)
     - [Tencent](#tencent)
     - [MTCaptcha](#mtcaptcha)
+    - [Cutcaptcha](#cutcaptcha)
   - [Other methods](#other-methods)
     - [send / getResult](#send--getresult)
     - [balance](#balance)
@@ -273,6 +274,18 @@ Use this method to bypass MTCaptcha.
 $result = $solver->mt_captcha([
     'sitekey' => 'MTPublic-KzqLY1cKH',
     'url'     => 'https://2captcha.com/demo/mtcaptcha',
+]);
+```
+
+### Cutcaptcha
+
+Use this method to bypass Cutcaptcha.
+
+```php
+$result = $solver->cutcaptcha([
+    'misery_key' => 'a1488b66da00bf332a1488993a5443c79047e752',
+    'api_key'    => 'SAb83IIB',
+    'url'        => 'https://example.cc/foo/bar.html',
 ]);
 ```
 
