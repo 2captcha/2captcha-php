@@ -361,6 +361,22 @@ class TwoCaptcha
         return $this->solve($captcha);
     }
 
+    /**
+     * Wrapper for solving MTCaptcha
+     *
+     * @param $captcha
+     * @return \stdClass
+     * @throws ApiException
+     * @throws NetworkException
+     * @throws TimeoutException
+     * @throws ValidationException
+     */
+    public function mt_captcha($captcha)
+    {
+        $captcha['method'] = 'mt_captcha';
+
+        return $this->solve($captcha);
+    }
 
 
     /**

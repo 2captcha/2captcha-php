@@ -38,6 +38,7 @@ Examples of API requests for different captcha types are available on the [PHP c
     - [Turnstile](#turnstile)
     - [AmazonWaf](#amazonwaf)
     - [Tencent](#tencent)
+    - [MTCaptcha](#mtcaptcha)
   - [Other methods](#other-methods)
     - [send / getResult](#send--getresult)
     - [balance](#balance)
@@ -260,6 +261,18 @@ Use this method to bypass Tencent.
 $result = $solver->tencent([
     'sitekey' => '123456789',
     'url'     => 'https://www.site.com/page/',
+]);
+```
+
+
+### MTCaptcha
+
+Use this method to bypass MTCaptcha.
+
+```php
+$result = $solver->mt_captcha([
+    'sitekey' => 'MTPublic-KzqLY1cKH',
+    'url'     => 'https://2captcha.com/demo/mtcaptcha',
 ]);
 ```
 
