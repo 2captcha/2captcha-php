@@ -7,10 +7,10 @@
 <a href="https://github.com/2captcha/2captcha-java"><img src="https://github.com/user-attachments/assets/a3d923f6-4fec-4c07-ac50-e20da6370911" width="50" height="30"></a>
 <a href="https://github.com/2captcha/2captcha-csharp"><img src="https://github.com/user-attachments/assets/f4d449de-780b-49ed-bb0a-b70c82ec4b32" width="38" height="30"></a>
 
-# PHP Module for 2Captcha API
+# PHP Module for 2Captcha API (captcha solver)
 The easiest way to quickly integrate [2Captcha] captcha solving service into your code to automate solving of any types of captcha.
 Examples of API requests for different captcha types are available on the [PHP captcha solver](https://2captcha.com/lang/php) page.
-- [PHP Module for 2Captcha API](#php-module-for-2captcha-api)
+- [PHP Module for 2Captcha API (captcha solver)](#php-module-for-2captcha-api-captcha-solver)
   - [Installation](#installation)
     - [Composer](#composer)
     - [Manual](#manual)
