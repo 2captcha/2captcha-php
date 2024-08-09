@@ -600,11 +600,16 @@ class TwoCaptcha
     {
         $result = new \stdClass();
 
-        $result->captchaId = $this->send($captcha);
+        $captchaId = $this->send($captcha);
 
         if ($this->lastCaptchaHasCallback) return $result;
 
-        $result->code = $this->waitForResult($result->captchaId, $waitOptions);
+        $result = $this->waitForResult($captchaId, $waitOptions);
+
+        $result->captchaId = $captchaId;
+        $result->code = $result->request;
+        unset($result->request);
+        unset($result->status);
 
         return $result;
     }
@@ -686,15 +691,19 @@ class TwoCaptcha
             'id'     => $id,
         ]);
 
-        if ($response == 'CAPCHA_NOT_READY') {
+        $decoded_response = json_decode($response);
+
+        if ($decoded_response->request == 'CAPCHA_NOT_READY') {
             return null;
         }
 
-        if (mb_strpos($response, 'OK|') !== 0) {
+        if ($decoded_response->status == 0) {
             throw new ApiException('Cannot recognise api response (' . $response . ')');
         }
 
-        return mb_substr($response, 3);
+        if ($decoded_response->status == 1) {
+            return $decoded_response;
+        }
     }
 
     /**
@@ -707,8 +716,8 @@ class TwoCaptcha
     public function balance()
     {
         $response = $this->res('getbalance');
-
-        return floatval($response);
+        $decoded_response = json_decode($response);
+        return floatval($decoded_response->request);
     }
 
     /**
@@ -743,6 +752,7 @@ class TwoCaptcha
         }
 
         $query['key'] = $this->apiKey;
+        $query['json'] = 1;
 
         return $this->apiClient->res($query);
     }
