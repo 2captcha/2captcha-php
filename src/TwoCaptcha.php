@@ -607,8 +607,12 @@ class TwoCaptcha
         $result = $this->waitForResult($captchaId, $waitOptions);
 
         $result->captchaId = $captchaId;
-        $result->code = $result->request;
-        unset($result->request);
+        if (is_object($result->request)) {
+            $result->code = json_encode($result->request);
+        } else {
+            $result->code = $result->request;
+            unset($result->request);
+        }
         unset($result->status);
 
         return $result;
