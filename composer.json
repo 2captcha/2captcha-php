@@ -30,6 +30,9 @@
             "homepage": "https://2captcha.com/"
         }
     ],
+    "scripts": {
+        "test": "phpunit"
+    },
     "require": {
         "php": ">=7.3",
         "ext-curl": "*",
