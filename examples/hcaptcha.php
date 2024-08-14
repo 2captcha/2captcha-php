@@ -15,4 +15,4 @@ try {
     die($e->getMessage());
 }
 
-die('Captcha solved: ' . $result->code);
+die('Captcha ' . $result->captchaId .' solved! Token: ' . $result->code . ' respKey: ' . $result->respKey . ' useragent: ' . $result->useragent);
