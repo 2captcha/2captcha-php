@@ -467,8 +467,10 @@ class TwoCaptcha
         }
 
         $this->requireFileOrBase64($captcha);
+        $this->requireHintOrHintImg($captcha);
 
         $captcha['method'] = empty($captcha['base64']) ? 'post' : 'base64';
+        $captcha['recaptcha'] = 1;
 
         return $this->solve($captcha);
     }
@@ -498,7 +500,7 @@ class TwoCaptcha
         $captcha['canvas'] = 1;
 
         if ( empty($captcha['hintText']) && empty($captcha['hintImg']) ) {
-            throw new ValidationException('At least one of parameters: hintText or hintImg required!');
+            throw new ValidationException('At least one parameter required: hintText or hintImg');
         }
 
         return $this->solve($captcha);
@@ -523,6 +525,7 @@ class TwoCaptcha
         }
 
         $this->requireFileOrBase64($captcha);
+        $this->requireHintOrHintImg($captcha);
 
         $captcha['method'] = empty($captcha['base64']) ? 'post' : 'base64';
         $captcha['coordinatescaptcha'] = 1;
@@ -803,6 +806,18 @@ class TwoCaptcha
         if (!file_exists($captcha[$key])) {
             throw new ValidationException('File not found (' . $captcha[$key] . ')');
         }
+    }
+
+    /**
+     * Validates if grid/coordinates parameters are correct
+     *
+     * @param $captcha
+     * @param string $key
+     * @throws ValidationException
+     */
+    private function requireHintOrHintImg($captcha)
+    {
+        if (empty($captcha['hintText']) && empty($captcha['hintImg'])) throw new ValidationException('At least one parameter: hintText or hintImg is required');
     }
 
     /**
