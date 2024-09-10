@@ -4,25 +4,30 @@ set_time_limit(130);
 
 require(__DIR__ . '/../src/autoloader.php');
 
-$solver = new \TwoCaptcha\TwoCaptcha('YOUR_API_KEY');
+$apikey = getenv("APIKEY");
+$solver = new \TwoCaptcha\TwoCaptcha($apikey);
 
 // To bypass GeeTest first we need to get new challenge value
 $ch = curl_init();
-curl_setopt($ch, CURLOPT_URL, "https://mysite.com/captcha_challenge");
+curl_setopt($ch, CURLOPT_URL, "https://2captcha.com/api/v1/captcha-demo/gee-test/init-params?t=" . time());
 curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
 $resp = curl_exec($ch);
-$challenge = explode(";", $resp)[0];
+$challenge = json_decode($resp)->challenge;
+
+var_dump($resp);
+var_dump($challenge);
 
 // Then we are ready to make a call to 2captcha API
 try {
     $result = $solver->geetest([
-        'gt'        => 'f2ae6cadcf7886856696502e1d55e00c',
-        'apiServer' => 'api-na.geetest.com',
+        'gt'        => '81388ea1fc187e0c335c0a8907ff2625',
+        'apiServer' => 'api.geetest.com',
         'challenge' => $challenge,
-        'url'       => 'https://mysite.com/captcha.html',
+        'url'       => 'https://2captcha.com/demo/geetest',
     ]);
 } catch (\Exception $e) {
     die($e->getMessage());
 }
 
+var_dump($result);
 die('Captcha solved: ' . $result->code);
