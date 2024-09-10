@@ -95,4 +95,18 @@ abstract class AbstractWrapperTestCase extends TestCase
 
         $result = $solver->{$this->method}($files);
     }
+
+    /**
+     * If required parameters are missing
+     * should trigger ValidationException
+     */
+    protected function checkIfExceptionThrownOnMissingParameter($data)
+    {
+        $this->expectException(ValidationException::class);
+
+        $solver = new TwoCaptcha('API_KEY');
+
+        $result = $solver->{$this->method}($data['params']);
+    }
+
 }
