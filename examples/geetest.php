@@ -14,9 +14,6 @@ curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
 $resp = curl_exec($ch);
 $challenge = json_decode($resp)->challenge;
 
-var_dump($resp);
-var_dump($challenge);
-
 // Then we are ready to make a call to 2captcha API
 try {
     $result = $solver->geetest([
