@@ -610,8 +610,38 @@ class TwoCaptcha
         $result = $this->waitForResult($captchaId, $waitOptions);
 
         $result->captchaId = $captchaId;
+
         if (is_object($result->request)) {
             $result->code = json_encode($result->request);
+        } elseif (is_array($result->request) && isset($result->request[0])) {
+            if (is_object($result->request[0])) {
+
+                $firstElement = $result->request[0];
+
+                if (isset($firstElement->{"0"}) && is_array($firstElement->{"0"})) {
+                $code = "canvas:";
+                    foreach ($result->request[0] as $key => $value) {
+                        $coordinates = [];
+                        foreach ($value as $coord) {
+                            $coordinates[] = $coord->x . ',' . $coord->y;
+                        }
+                        $code .= implode(',', $coordinates) . ';';
+                    }
+                    $result->canvas = $result->request;
+                } else {
+                    $coordinates = [];
+                    $code = "coordinates:";
+                    foreach ($result->request as $coord) {
+                        $coordinates[] = 'x=' . $coord->x . ',' . 'y=' . $coord->y;
+                    }
+                    $code .= implode(';', $coordinates);
+                    $result->coordinates = $result->request;
+                }
+
+                $result->code = $code;
+                unset($result->request);
+                return $result;
+            }
         } else {
             $result->code = $result->request;
             unset($result->request);
