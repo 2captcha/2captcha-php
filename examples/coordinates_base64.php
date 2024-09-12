@@ -7,7 +7,8 @@ require(__DIR__ . '/../src/autoloader.php');
 $image = __DIR__ . '/images/grid.jpg';
 $base64 = base64_encode(file_get_contents($image));
 
-$solver = new \TwoCaptcha\TwoCaptcha('YOUR_API_KEY');
+$apikey = getenv("APIKEY");
+$solver = new \TwoCaptcha\TwoCaptcha($apikey);
 
 try {
     $result = $solver->coordinates(['base64' => $base64]);
@@ -15,4 +16,5 @@ try {
     die($e->getMessage());
 }
 
+var_dump($result);
 die('Captcha solved: ' . $result->code);

@@ -8,20 +8,30 @@ class GridTest extends AbstractWrapperTestCase
 
     private $captchaImg = __DIR__ . '/../examples/images/grid.jpg';
 
-    public function testSingleFile()
+    public function testMissingParameterCase()
     {
-        $this->checkIfCorrectParamsSendAndResultReturned([
+        $this->checkIfExceptionThrownOnMissingParameter([
             'params'     => $this->captchaImg,
-            'sendParams' => ['method' => 'post','soft_id' => '4585'],
+            'sendParams' => ['method' => 'post', 'recaptcha' => 1, 'soft_id' => 4585,],
             'sendFiles'  => ['file' => $this->captchaImg],
         ]);
     }
 
+
+    // public function testSingleFile()
+    // {
+    //     $this->checkIfCorrectParamsSendAndResultReturned([
+    //         'params'     => $this->captchaImg,
+    //         'sendParams' => ['method' => 'post','soft_id' => '4585', 'hintText' => 'Select all images with an Orange'],
+    //         'sendFiles'  => ['file' => $this->captchaImg],
+    //     ]);
+    // }
+
     public function testSingleFileParameter()
     {
         $this->checkIfCorrectParamsSendAndResultReturned([
-            'params'     => ['file' => $this->captchaImg],
-            'sendParams' => ['method' => 'post','soft_id' => '4585'],
+            'params'     => ['file' => $this->captchaImg, 'hintText' => 'Select all images with an Orange'],
+            'sendParams' => ['method' => 'post', 'recaptcha' => 1, 'soft_id' => 4585, 'textinstructions' => 'Select all images with an Orange'],
             'sendFiles'  => ['file' => $this->captchaImg],
         ]);
     }
@@ -29,8 +39,8 @@ class GridTest extends AbstractWrapperTestCase
     public function testBase64()
     {
         $this->checkIfCorrectParamsSendAndResultReturned([
-            'params'     => ['base64' => '...'],
-            'sendParams' => ['method' => 'base64', 'body' => '...','soft_id' => '4585'],
+            'params'     => ['base64' => '...', 'hintText' => 'Select all images with an Orange'],
+            'sendParams' => ['method' => 'base64', 'recaptcha' => 1, 'body' => '...','soft_id' => 4585, 'textinstructions' => 'Select all images with an Orange'],
             'sendFiles'  => [],
         ]);
     }
@@ -52,13 +62,14 @@ class GridTest extends AbstractWrapperTestCase
 
         $sendParams = [
             'method'           => 'post',
+            'recaptcha'        => 1,
             'recaptcharows'    => 3,
             'recaptchacols'    => 3,
             'previousID'       => 0,
             'can_no_answer'    => 0,
             'lang'             => 'en',
             'textinstructions' => 'Select all images with an Orange',
-            'soft_id'          => '4585',
+            'soft_id'          => 4585,
         ];
 
         $sendFiles = [

@@ -37,11 +37,16 @@ abstract class AbstractWrapperTestCase extends TestCase
             )
             ->willReturn('OK|' . $captchaId);
 
+
+        $resMock = new \stdClass();
+        $resMock->status = 1;
+        $resMock->request = $code;
+
         $apiClient
             ->expects($this->once())
             ->method('res')
-            ->with($this->equalTo(['action' => 'get', 'id' => $captchaId, 'key' => $apiKey]))
-            ->willReturn('OK|' . $code);
+            ->with($this->equalTo(['action' => 'get', 'id' => $captchaId, 'key' => $apiKey, 'json' => 1]))
+            ->willReturn(json_encode($resMock));
 
         $solver = new TwoCaptcha([
             'apiKey' => $apiKey,
@@ -90,4 +95,18 @@ abstract class AbstractWrapperTestCase extends TestCase
 
         $result = $solver->{$this->method}($files);
     }
+
+    /**
+     * If required parameters are missing
+     * should trigger ValidationException
+     */
+    protected function checkIfExceptionThrownOnMissingParameter($data)
+    {
+        $this->expectException(ValidationException::class);
+
+        $solver = new TwoCaptcha('API_KEY');
+
+        $result = $solver->{$this->method}($data['params']);
+    }
+
 }

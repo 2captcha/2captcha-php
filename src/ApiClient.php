@@ -46,7 +46,7 @@ class ApiClient
         if (!$this->curl) $this->curl = curl_init();
 
         foreach ($files as $key => $file) {
-            $captcha[$key] = $this->curlPrepareFile($file);
+            $captcha[$key] = $this->curlPrepareFile($file, $key);
         }
 
         curl_setopt_array($this->curl, [
@@ -114,10 +114,10 @@ class ApiClient
      * @param $file
      * @return \CURLFile|string
      */
-    private function curlPrepareFile($file)
+    private function curlPrepareFile($file, $key = 'file')
     {
         if (function_exists('curl_file_create')) { // php 5.5+
-            return curl_file_create($file, mime_content_type($file), 'file');
+            return curl_file_create($file, mime_content_type($file), $key);
         } else {
             return '@' . realpath($file);
         }

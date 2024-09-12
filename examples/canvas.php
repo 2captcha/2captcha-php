@@ -4,7 +4,8 @@ set_time_limit(130);
 
 require(__DIR__ . '/../src/autoloader.php');
 
-$solver = new \TwoCaptcha\TwoCaptcha('YOUR_API_KEY');
+$apikey = getenv("APIKEY");
+$solver = new \TwoCaptcha\TwoCaptcha($apikey);
 
 try {
     $result = $solver->canvas([
@@ -15,4 +16,5 @@ try {
     die($e->getMessage());
 }
 
-die('Captcha solved: ' . $result->code);
+var_dump($result);
+// die('Captcha solved: ' . $result->code);

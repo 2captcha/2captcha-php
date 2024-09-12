@@ -467,8 +467,10 @@ class TwoCaptcha
         }
 
         $this->requireFileOrBase64($captcha);
+        $this->requireHintOrHintImg($captcha);
 
         $captcha['method'] = empty($captcha['base64']) ? 'post' : 'base64';
+        $captcha['recaptcha'] = 1;
 
         return $this->solve($captcha);
     }
@@ -498,7 +500,7 @@ class TwoCaptcha
         $captcha['canvas'] = 1;
 
         if ( empty($captcha['hintText']) && empty($captcha['hintImg']) ) {
-            throw new ValidationException('At least one of parameters: hintText or hintImg required!');
+            throw new ValidationException('At least one parameter required: hintText or hintImg');
         }
 
         return $this->solve($captcha);
@@ -523,6 +525,7 @@ class TwoCaptcha
         }
 
         $this->requireFileOrBase64($captcha);
+        $this->requireHintOrHintImg($captcha);
 
         $captcha['method'] = empty($captcha['base64']) ? 'post' : 'base64';
         $captcha['coordinatescaptcha'] = 1;
@@ -600,11 +603,50 @@ class TwoCaptcha
     {
         $result = new \stdClass();
 
-        $result->captchaId = $this->send($captcha);
+        $captchaId = $this->send($captcha);
 
         if ($this->lastCaptchaHasCallback) return $result;
 
-        $result->code = $this->waitForResult($result->captchaId, $waitOptions);
+        $result = $this->waitForResult($captchaId, $waitOptions);
+
+        $result->captchaId = $captchaId;
+
+        if (is_object($result->request)) {
+            $result->code = json_encode($result->request);
+        } elseif (is_array($result->request) && isset($result->request[0])) {
+            if (is_object($result->request[0])) {
+
+                $firstElement = $result->request[0];
+
+                if (isset($firstElement->{"0"}) && is_array($firstElement->{"0"})) {
+                $code = "canvas:";
+                    foreach ($result->request[0] as $key => $value) {
+                        $coordinates = [];
+                        foreach ($value as $coord) {
+                            $coordinates[] = $coord->x . ',' . $coord->y;
+                        }
+                        $code .= implode(',', $coordinates) . ';';
+                    }
+                    $result->canvas = $result->request;
+                } else {
+                    $coordinates = [];
+                    $code = "coordinates:";
+                    foreach ($result->request as $coord) {
+                        $coordinates[] = 'x=' . $coord->x . ',' . 'y=' . $coord->y;
+                    }
+                    $code .= implode(';', $coordinates);
+                    $result->coordinates = $result->request;
+                }
+
+                $result->code = $code;
+                unset($result->request);
+                return $result;
+            }
+        } else {
+            $result->code = $result->request;
+            unset($result->request);
+        }
+        unset($result->status);
 
         return $result;
     }
@@ -686,15 +728,19 @@ class TwoCaptcha
             'id'     => $id,
         ]);
 
-        if ($response == 'CAPCHA_NOT_READY') {
+        $decoded_response = json_decode($response);
+
+        if ($decoded_response->request == 'CAPCHA_NOT_READY') {
             return null;
         }
 
-        if (mb_strpos($response, 'OK|') !== 0) {
+        if ($decoded_response->status == 0) {
             throw new ApiException('Cannot recognise api response (' . $response . ')');
         }
 
-        return mb_substr($response, 3);
+        if ($decoded_response->status == 1) {
+            return $decoded_response;
+        }
     }
 
     /**
@@ -707,8 +753,8 @@ class TwoCaptcha
     public function balance()
     {
         $response = $this->res('getbalance');
-
-        return floatval($response);
+        $decoded_response = json_decode($response);
+        return floatval($decoded_response->request);
     }
 
     /**
@@ -743,6 +789,7 @@ class TwoCaptcha
         }
 
         $query['key'] = $this->apiKey;
+        $query['json'] = 1;
 
         return $this->apiClient->res($query);
     }
@@ -789,6 +836,18 @@ class TwoCaptcha
         if (!file_exists($captcha[$key])) {
             throw new ValidationException('File not found (' . $captcha[$key] . ')');
         }
+    }
+
+    /**
+     * Validates if grid/coordinates parameters are correct
+     *
+     * @param $captcha
+     * @param string $key
+     * @throws ValidationException
+     */
+    private function requireHintOrHintImg($captcha)
+    {
+        if (empty($captcha['hintText']) && empty($captcha['hintImg'])) throw new ValidationException('At least one parameter: hintText or hintImg is required');
     }
 
     /**
