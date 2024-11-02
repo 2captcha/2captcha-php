@@ -333,6 +333,21 @@ $result = $solver->datadome([
 ]);
 ```
 
+### CyberSiARA
+
+Use this method to bypass CyberSiARA.
+
+```php
+$result = $solver->datadome([
+    'captcha_url'     => 'af23e041b22d000a11e22a230fa8991c',
+    'userAgent' => 'https://cap.aisecurius.com',
+    'url'        => 'https://example.com/',
+    'proxy'       => [
+        'type' => 'HTTPS',
+        'uri'  => 'username:str0ngP@$$W0rd@1.2.3.4:4321',
+    ],
+]);
+```
 
 
 ## Other methods
