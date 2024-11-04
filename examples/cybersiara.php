@@ -4,7 +4,7 @@ set_time_limit(130);
 
 require(__DIR__ . '/../src/autoloader.php');
 
-$solver = new \TwoCaptcha\TwoCaptcha('06c869c488704f62826181f2562ac999');
+$solver = new \TwoCaptcha\TwoCaptcha('YOUR_API_KEY');
 
 try {
     $result = $solver->cybersiara([

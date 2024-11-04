@@ -2,9 +2,9 @@
 
 namespace TwoCaptcha\Tests;
 
-class SyberSiaraTest extends AbstractWrapperTestCase
+class CyberSiaraTest extends AbstractWrapperTestCase
 {
-    protected $method = 'lemin';
+    protected $method = 'cybersiara';
 
     public function testAllOptions()
     {
