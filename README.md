@@ -25,7 +25,6 @@ Examples of API requests for different captcha types are available on the [PHP c
     - [FunCaptcha](#funcaptcha)
     - [GeeTest](#geetest)
     - [GeeTestV4](#geetestv4)
-    - [hCaptcha](#hcaptcha)
     - [KeyCaptcha](#keycaptcha)
     - [Capy](#capy)
     - [Grid](#grid)
@@ -170,14 +169,7 @@ $result = $solver->geetest_v4([
     'url'       => 'https://mysite.com/captcha.html',
 ]);
 ```
-### hCaptcha
-Use this method to solve hCaptcha challenge. Returns a token to bypass captcha.
-```php
-$result = $solver->hcaptcha([
-    'sitekey'   => '10000000-ffff-ffff-ffff-000000000001',
-    'url'       => 'https://www.site.com/page/',
-]);
-```
+
 ### KeyCaptcha
 Token-based method to solve KeyCaptcha.
 ```php
@@ -358,7 +350,7 @@ $solver->report($id, true); // captcha solved correctly
 $solver->report($id, false); // captcha solved incorrectly
 ```
 ## Proxies
-You can pass your proxy as an additional argument for methods: recaptcha, funcaptcha, geetest, geetest v4, hcaptcha, keycaptcha, capy puzzle, lemin, turnstile, amazon waf and etc. The proxy will be forwarded to the API to solve the captcha.
+You can pass your proxy as an additional argument for methods: recaptcha, funcaptcha, geetest, geetest v4, keycaptcha, capy puzzle, lemin, turnstile, amazon waf and etc. The proxy will be forwarded to the API to solve the captcha.
 
 We have our own proxies that we can offer you. [Buy residential proxies](https://2captcha.com/proxy/residential-proxies) for avoid restrictions and blocks. [Quick start](https://2captcha.com/proxy?openAddTrafficModal=true).
 
