@@ -19,7 +19,13 @@
         "lemin",
         "cloudflare turnstile",
         "amazon waf",
-        "audio captcha"
+        "audio captcha",
+        "Tencent",
+        "MTCaptcha",
+        "Cutcaptcha",
+        "Friendly Captcha",
+        "atbCAPTCHA",
+        "DataDome"
     ],
     "license": "MIT",
     "authors": [
@@ -47,5 +53,8 @@
         "psr-4": {
             "TwoCaptcha\\Tests\\": "tests/"
         }
+    },
+    "scripts": {
+        "test": "vendor/bin/phpunit"
     }
 }
