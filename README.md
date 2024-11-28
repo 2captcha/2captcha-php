@@ -42,6 +42,7 @@ Examples of API requests for different captcha types are available on the [PHP c
     - [Friendly Captcha](#friendly-captcha)
     - [atbCAPTCHA](#atbcaptcha)
     - [DataDome](#datadome)
+    - [CyberSiARA](#cybersiara)
   - [Other methods](#other-methods)
     - [send / getResult](#send--getresult)
     - [balance](#balance)
@@ -325,6 +326,17 @@ $result = $solver->datadome([
 ]);
 ```
 
+### CyberSiARA
+
+Use this method to bypass CyberSiARA.
+
+```php
+$result = $solver->cybersiara([
+    'master_url_id' => 'tpjOCKjjpdzv3d8Ub2E9COEWKt1vl1Mv',
+    'pageurl' => 'https://demo.mycybersiara.com/',
+    'userAgent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/115.0.0.0 Safari/537.36',
+]);
+```
 
 
 ## Other methods

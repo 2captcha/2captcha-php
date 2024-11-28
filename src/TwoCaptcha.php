@@ -585,6 +585,23 @@ class TwoCaptcha
     }
 
     /**
+     * Wrapper for solving CyberSiARA
+     *
+     * @param $captcha
+     * @return \stdClass
+     * @throws ApiException
+     * @throws NetworkException
+     * @throws TimeoutException
+     * @throws ValidationException
+     */
+    public function cybersiara($captcha)
+    {
+        $captcha['method'] = 'cybersiara';
+
+        return $this->solve($captcha);
+    }
+
+    /**
      * Sends captcha to `/in.php` and waits for it's result.
      * This helper can be used insted of manual using of `send` and `getResult` functions.
      *
