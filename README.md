@@ -90,7 +90,7 @@ $solver = new \TwoCaptcha\TwoCaptcha([
 
 | Option           | Default value | Description                                                                                                                                        |
 | ---------------- | ------------- | -------------------------------------------------------------------------------------------------------------------------------------------------- |
-| softId           | -             | your software ID obtained after publishing in [2captcha sofware catalog]                                                                           |
+| softId           | -             | your software ID obtained after publishing in [2captcha software catalog]                                                                          |
 | callback         | -             | URL of your web-sever that receives the captcha recognition result. The URl should be first registered in [pingback settings] of your account      |
 | defaultTimeout   | 120           | Polling timeout in seconds for all captcha types except ReCaptcha. Defines how long the module tries to get the answer from `res.php` API endpoint |
 | recaptchaTimeout | 600           | Polling timeout for ReCaptcha in seconds. Defines how long the module tries to get the answer from `res.php` API endpoint                          |
@@ -402,7 +402,7 @@ The graphics and trademarks included in this repository are not covered by the M
 
 <!-- Shared links -->
 [2Captcha]: https://2captcha.com/
-[2captcha sofware catalog]: https://2captcha.com/software
+[2captcha software catalog]: https://2captcha.com/software
 [pingback settings]: https://2captcha.com/setting/pingback
 [post options]: https://2captcha.com/2captcha-api#normal_post
 [list of supported languages]: https://2captcha.com/2captcha-api#language
