@@ -1,6 +1,7 @@
 #PHP and development related
 .idea
 /vendor
+composer.phar
 
 # Mac OS General
 .DS_Store
