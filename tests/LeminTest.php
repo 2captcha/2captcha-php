@@ -11,7 +11,7 @@ class LeminTest extends AbstractWrapperTestCase
         $params = [
             'captcha_id'  => 'CROPPED_d3d4d56_73ca4008925b4f83a8bed59c2dd0df6d',
             'api_server' => 'api.leminnow.com',
-            'pageurl'  => 'http://sat2.aksigorta.com.tr',
+            'pageurl'  => 'https://www.site.com/page/',
             'proxy'    => [
                 'type' => 'HTTPS',
                 'uri'  => 'username:str0ngP@$$W0rd@1.2.3.4:4321',
@@ -22,7 +22,7 @@ class LeminTest extends AbstractWrapperTestCase
             'method'     => 'lemin',
             'captcha_id' => 'CROPPED_d3d4d56_73ca4008925b4f83a8bed59c2dd0df6d',
             'api_server' => 'api.leminnow.com',
-            'pageurl'    => 'http://sat2.aksigorta.com.tr',
+            'pageurl'    => 'https://www.site.com/page/',
             'proxy'      => 'username:str0ngP@$$W0rd@1.2.3.4:4321',
             'proxytype'  => 'HTTPS',
             'soft_id'    => '4585',

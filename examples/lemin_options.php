@@ -13,7 +13,7 @@ try {
     $result->code = $solver->lemin([
         'captchaId' => 'CROPPED_d3d4d56_73ca4008925b4f83a8bed59c2dd0df6d',
         'apiServer' => 'api.leminnow.com',
-        'url'       => 'http://sat2.aksigorta.com.tr',
+        'url'       => 'https://www.site.com/page/',
         'divId'     => 'lemin-cropped-captcha',
         'proxy'     => [
             'type' => 'HTTPS',
