@@ -9,7 +9,7 @@
 
 # PHP Module for 2Captcha API (captcha solver)
 The easiest way to quickly integrate [2Captcha] captcha solving service into your code to automate solving of any types of captcha.
-Examples of API requests for different captcha types are available on the [PHP captcha solver](https://2captcha.com/lang/php) page.
+Examples of API requests for different captcha types are available on the [PHP captcha solver] page.
 - [PHP Module for 2Captcha API (captcha solver)](#php-module-for-2captcha-api-captcha-solver)
   - [Installation](#installation)
     - [Composer](#composer)
@@ -20,22 +20,22 @@ Examples of API requests for different captcha types are available on the [PHP c
     - [Captcha options](#captcha-options)
     - [Normal Captcha](#normal-captcha)
     - [Text Captcha](#text-captcha)
-    - [ReCaptcha v2](#recaptcha-v2)
-    - [ReCaptcha v3](#recaptcha-v3)
+    - [reCAPTCHA v2](#recaptcha-v2)
+    - [reCAPTCHA v3](#recaptcha-v3)
     - [FunCaptcha](#funcaptcha)
     - [GeeTest](#geetest)
-    - [GeeTestV4](#geetestv4)
+    - [GeeTest V4](#geetest-v4)
     - [KeyCaptcha](#keycaptcha)
     - [Capy](#capy)
     - [Grid](#grid)
     - [Canvas](#canvas)
     - [ClickCaptcha](#clickcaptcha)
     - [Rotate](#rotate)
-    - [Audio](#audio)
+    - [Audio Captcha](#audio)
     - [Yandex](#yandex)
-    - [Lemin](#lemin)
-    - [Turnstile](#turnstile)
-    - [AmazonWaf](#amazonwaf)
+    - [Lemin Cropped Captcha](#lemin-cropped-captcha)
+    - [Cloudflare Turnstile](#cloudflare-turnstile)
+    - [Amazon WAF](#amazon-waf)
     - [Tencent](#tencent)
     - [MTCaptcha](#mtcaptcha)
     - [Cutcaptcha](#cutcaptcha)
@@ -49,6 +49,7 @@ Examples of API requests for different captcha types are available on the [PHP c
     - [report](#report)
   - [Proxies](#proxies)
   - [Error handling](#error-handling)
+  - [Examples](#examples)
   - [Get in touch](#get-in-touch)
   - [Join the team 👪](#join-the-team-)
   - [License](#license)
@@ -91,13 +92,15 @@ $solver = new \TwoCaptcha\TwoCaptcha([
 
 | Option           | Default value | Description                                                                                                                                        |
 | ---------------- | ------------- | -------------------------------------------------------------------------------------------------------------------------------------------------- |
-| softId           | -             | your software ID obtained after publishing in [2captcha software catalog]                                                                          |
+| softId           | 4585             | your software ID obtained after publishing in [2captcha software catalog]                                                                          |
 | callback         | -             | URL of your web-sever that receives the captcha recognition result. The URl should be first registered in [pingback settings] of your account      |
-| defaultTimeout   | 120           | Polling timeout in seconds for all captcha types except ReCaptcha. Defines how long the module tries to get the answer from `res.php` API endpoint |
-| recaptchaTimeout | 600           | Polling timeout for ReCaptcha in seconds. Defines how long the module tries to get the answer from `res.php` API endpoint                          |
+| defaultTimeout   | 120           | Polling timeout in seconds for all captcha types except reCAPTCHA. Defines how long the module tries to get the answer from `res.php` API endpoint |
+| recaptchaTimeout | 600           | Polling timeout for reCAPTCHA in seconds. Defines how long the module tries to get the answer from `res.php` API endpoint                          |
 | pollingInterval  | 10            | Interval in seconds between requests to `res.php` API endpoint, setting values less than 5 seconds is not recommended                              |
 
->  **IMPORTANT:** once `callback` is defined for `TwoCaptcha` instance, all methods return only the captcha ID and DO NOT poll the API to get the result. The result will be sent to the callback URL.
+> [!IMPORTANT]
+> Once `callback` is defined for `TwoCaptcha` instance, all methods return only the captcha ID and DO NOT poll the API to get the result. The result will be sent to the callback URL.
+
 To get the answer manually use [getResult method](#send--getresult)
 
 ## Solve captcha
@@ -107,7 +110,7 @@ When you submit any image-based captcha use can provide additional options to he
 | Option        | Default Value | Description                                                                                        |
 | ------------- | ------------- | -------------------------------------------------------------------------------------------------- |
 | numeric       | 0             | Defines if captcha contains numeric or other symbols [see more info in the API docs][post options] |
-| minLength     | 0             | minimal answer lenght                                                                              |
+| minLength     | 0             | minimal answer length                                                                              |
 | maxLength     | 0             | maximum answer length                                                                              |
 | phrase        | 0             | defines if the answer contains multiple words or not                                               |
 | caseSensitive | 0             | defines if the answer is case sensitive                                                            |
@@ -119,25 +122,44 @@ When you submit any image-based captcha use can provide additional options to he
 Below you can find basic examples for every captcha type. Check out [examples directory] to find more examples with all available options.
 
 ### Normal Captcha
+
+<sup>[API method description.](https://2captcha.com/2captcha-api#solving_normal_captcha)</sup>
+
 To bypass a normal captcha (distorted text on image) use the following method. This method also can be used to recognize any text on the image.
+
 ```php
 $result = $solver->normal('path/to/captcha.jpg');
 ```
+
 ### Text Captcha
+
+<sup>[API method description.](https://2captcha.com/2captcha-api#solving_text_captcha)</sup>
+
 This method can be used to bypass a captcha that requires to answer a question provided in clear text.
+
 ```php
 $result = $solver->text('If tomorrow is Saturday, what day is today?');
 ```
-### ReCaptcha v2
-Use this method to solve ReCaptcha V2 and obtain a token to bypass the protection.
+
+### reCAPTCHA v2
+
+<sup>[API method description.](https://2captcha.com/2captcha-api#solving_recaptchav2_new)</sup>
+
+Use this method to solve reCAPTCHA V2 and obtain a token to bypass the protection.
+
 ```php
 $result = $solver->recaptcha([
     'sitekey' => '6Le-wvkSVVABCPBMRTvw0Q4Muexq1bi0DJwx_mJ-',
     'url'     => 'https://mysite.com/page/with/recaptcha',
 ]);
 ```
-### ReCaptcha v3
-This method provides ReCaptcha V3 solver and returns a token.
+
+### reCAPTCHA v3
+
+<sup>[API method description.](https://2captcha.com/2captcha-api#solving_recaptchav3)</sup>
+
+This method provides reCAPTCHA V3 solver and returns a token.
+
 ```php
 $result = $solver->recaptcha([
     'sitekey' => '6Le-wvkSVVABCPBMRTvw0Q4Muexq1bi0DJwx_mJ-',
@@ -145,16 +167,26 @@ $result = $solver->recaptcha([
     'version' => 'v3',
 ]);
 ```
+
 ### FunCaptcha
+
+<sup>[API method description.](https://2captcha.com/2captcha-api#solving_funcaptcha_new)</sup>
+
 FunCaptcha (Arkoselabs) solving method. Returns a token.
+
 ```php
 $result = $solver->funcaptcha([
     'sitekey' => '6Le-wvkSVVABCPBMRTvw0Q4Muexq1bi0DJwx_mJ-',
     'url'     => 'https://mysite.com/page/with/funcaptcha',
 ]);
 ```
+
 ### GeeTest
+
+<sup>[API method description.](https://2captcha.com/2captcha-api#solving_geetest)</sup>
+
 Method to solve GeeTest puzzle captcha. Returns a set of tokens as JSON.
+
 ```php
 $result = $solver->geetest([
     'gt'        => 'f1ab2cdefa3456789012345b6c78d90e',
@@ -162,8 +194,13 @@ $result = $solver->geetest([
     'url'       => 'https://www.site.com/page/',
 ]);
 ```
-### GeeTestV4
+
+### GeeTest V4
+
+<sup>[API method description.](https://2captcha.com/2captcha-api#geetest-v4)</sup>
+
 Method to solve GeeTest V4 puzzle captcha. Returns a set of tokens as JSON.
+
 ```php
 $result = $solver->geetest_v4([
     'captchaId' => '72bf15796d0b69c43867452fea615052',
@@ -172,7 +209,11 @@ $result = $solver->geetest_v4([
 ```
 
 ### KeyCaptcha
+
+<sup>[API method description.](https://2captcha.com/2captcha-api#solving_keycaptcha)</sup>
+
 Token-based method to solve KeyCaptcha.
+
 ```php
 $result = $solver->keycaptcha([
     's_s_c_user_id'          => 10,
@@ -182,8 +223,13 @@ $result = $solver->keycaptcha([
     'url'                    => 'https://www.keycaptcha.ru/demo-magnetic/',
 ]);
 ```
+
 ### Capy
+
+<sup>[API method description.](https://2captcha.com/2captcha-api#solving_capy)</sup>
+
 Token-based method to bypass Capy puzzle captcha.
+
 ```php
 $result = $solver->capy([
     'sitekey' => 'PUZZLE_Abc1dEFghIJKLM2no34P56q7rStu8v',
@@ -191,58 +237,101 @@ $result = $solver->capy([
     'api_server' => 'https://jp.api.capy.me/',
 ]);
 ```
+
 ### Grid
-Grid method is originally called Old ReCaptcha V2 method. The method can be used to bypass any type of captcha where you can apply a grid on image and need to click specific grid boxes. Returns numbers of boxes.
+
+<sup>[API method description.](https://2captcha.com/2captcha-api#grid)</sup>
+
+Grid method is originally called Old reCAPTCHA V2 method. The method can be used to bypass any type of captcha where you can apply a grid on image and need to click specific grid boxes. Returns numbers of boxes.
+
 ```php
 $result = $solver->grid('path/to/captcha.jpg');
 ```
+
 ### Canvas
+
+<sup>[API method description.](https://2captcha.com/2captcha-api#canvas)</sup>
+
 Canvas method can be used when you need to draw a line around an object on image. Returns a set of points' coordinates to draw a polygon.
+
 ```php
 $result = $solver->canvas('path/to/captcha.jpg');
 ```
+
 ### ClickCaptcha
+
+<sup>[API method description.](https://2captcha.com/2captcha-api#coordinates)</sup>
+
 ClickCaptcha method returns coordinates of points on captcha image. Can be used if you need to click on particular points on the image.
+
 ```php
 $result = $solver->coordinates('path/to/captcha.jpg');
 ```
+
 ### Rotate
+
+<sup>[API method description.](https://2captcha.com/2captcha-api#solving_rotatecaptcha)</sup>
+
 This method can be used to solve a captcha that asks to rotate an object. Mostly used to bypass FunCaptcha. Returns the rotation angle.
+
 ```php
 $result = $solver->rotate('path/to/captcha.jpg');
 ```
+
 ### Audio
+
+<sup>[API method description.](https://2captcha.com/2captcha-api#audio)</sup>
+
 This method can be used to solve a audio captcha
+
 ```php
 $result = $solver->audio('path/to/audio.mp3');
 ```
+
 ### Yandex
+
 Use this method to solve Yandex and obtain a token to bypass the protection.
+
 ```php
 $result = $solver->yandex([
     'sitekey' => 'Y5Lh0tiycconMJGsFd3EbbuNKSp1yaZESUOIHfeV',
     'url'     => 'https://rutube.ru',
 ]);
 ```
-### Lemin
+
+### Lemin Cropped Captcha
+
+<sup>[API method description.](https://2captcha.com/2captcha-api#lemin)</sup>
+
 Use this method to solve Lemin and obtain a token to bypass the protection.
+
 ```php
 $result = $solver->lemin([
     'captchaId' => 'CROPPED_d3d4d56_73ca4008925b4f83a8bed59c2dd0df6d',
     'apiServer' => 'api.leminnow.com',
-    'url'       => 'http://sat2.aksigorta.com.tr',
+    'url'       => 'https://www.site.com/page/',
 ]);
 ```
-### Turnstile
+
+### Cloudflare Turnstile
+
+<sup>[API method description.](https://2captcha.com/2captcha-api#turnstile)</sup>
+
 Use this method to solve Turnstile and obtain a token to bypass the protection.
+
 ```php
 $result = $solver->turnstile([
     'sitekey' => '0x4AAAAAAAChNiVJM_WtShFf',
     'url'     => 'https://ace.fusionist.io',
 ]);
 ```
-### AmazonWaf
-Use this method to solve AmazonWaf and obtain a token to bypass the protection.
+
+### Amazon WAF
+
+<sup>[API method description.](https://2captcha.com/2captcha-api#amazon-waf)</sup>
+
+Use this method to solve Amazon WAF and obtain a token to bypass the protection.
+
 ```php
 $result = $solver->amazon_waf([
     'sitekey' => 'AQIDAHjcYu/GjX+QlghicBgQ/7bFaQZ+m5FKCMDnO+vTbNg96AF5H1K/siwSLK7RfstKtN5bAAAAfjB8BgkqhkiG9w0BBwagbzBtAgEAMGgGCSqGSIb3DQEHATAeBglg',
@@ -253,6 +342,8 @@ $result = $solver->amazon_waf([
 ```
 
 ### Tencent
+
+<sup>[API method description.](https://2captcha.com/2captcha-api#tencent)</sup>
 
 Use this method to bypass Tencent.
 
@@ -266,6 +357,8 @@ $result = $solver->tencent([
 
 ### MTCaptcha
 
+<sup>[API method description.](https://2captcha.com/2captcha-api#mtcaptcha)</sup>
+
 Use this method to bypass MTCaptcha.
 
 ```php
@@ -276,6 +369,8 @@ $result = $solver->mt_captcha([
 ```
 
 ### Cutcaptcha
+
+<sup>[API method description.](https://2captcha.com/2captcha-api#cutcaptcha)</sup>
 
 Use this method to bypass Cutcaptcha.
 
@@ -289,6 +384,8 @@ $result = $solver->cutcaptcha([
 
 ### Friendly Captcha
 
+<sup>[API method description.](https://2captcha.com/2captcha-api#friendly-captcha)</sup>
+
 Use this method to bypass Friendly Captcha.
 
 ```php
@@ -299,6 +396,8 @@ $result = $solver->friendly_captcha([
 ```
 
 ### atbCAPTCHA
+
+<sup>[API method description.](https://2captcha.com/2captcha-api#atb-captcha)</sup>
 
 Use this method to bypass atbCAPTCHA.
 
@@ -312,11 +411,16 @@ $result = $solver->atb_captcha([
 
 ### DataDome
 
+<sup>[API method description.](https://2captcha.com/2captcha-api#datadome)</sup>
+
 Use this method to bypass DataDome.
+
+> [!IMPORTANT]
+> To solve the DataDome captcha, you must use a proxy. It is recommended to use [residential proxies].
 
 ```php
 $result = $solver->datadome([
-    'captcha_url'     => 'af23e041b22d000a11e22a230fa8991c',
+    'captcha_url'     => 'https://geo.captcha-delivery.com/captcha/?initialCid=AHrlqAAA...P~XFrBVptk&t=fe&referer=https%3A%2F%2Fhexample.com&s=45239&e=c538be..c510a00ea',
     'userAgent' => 'https://cap.aisecurius.com',
     'url'        => 'https://example.com/',
     'proxy'       => [
@@ -327,6 +431,8 @@ $result = $solver->datadome([
 ```
 
 ### CyberSiARA
+
+<sup>[API method description.](https://2captcha.com/2captcha-api#cybersiara)</sup>
 
 Use this method to bypass CyberSiARA.
 
@@ -351,22 +457,34 @@ sleep(20);
 $code = $solver->getResult($id);
 ```
 ### balance
+
+<sup>[API method description.](https://2captcha.com/2captcha-api#additional-methods)</sup>
+
 Use this method to get your account's balance
+
 ```php
 $balance = $solver->balance();
 ```
+
 ### report
+
+<sup>[API method description.](https://2captcha.com/2captcha-api#complain)</sup>
+
 Use this method to report good or bad captcha answer.
+
 ```php
 $solver->report($id, true); // captcha solved correctly
 $solver->report($id, false); // captcha solved incorrectly
 ```
+
 ## Proxies
+
 You can pass your proxy as an additional argument for methods: recaptcha, funcaptcha, geetest, geetest v4, keycaptcha, capy puzzle, lemin, turnstile, amazon waf and etc. The proxy will be forwarded to the API to solve the captcha.
 
-We have our own proxies that we can offer you. [Buy residential proxies](https://2captcha.com/proxy/residential-proxies) for avoid restrictions and blocks. [Quick start](https://2captcha.com/proxy?openAddTrafficModal=true).
+We have our own proxies that we can offer you. [Buy residential proxies] for avoid restrictions and blocks. [Quick start].
 
 Example solving reCAPTCHA V2 using proxy:
+
 ```php
 $result = $solver->recaptcha([
     'sitekey'   => '6Le-wvkSVVABCPBMRTvw0Q4Muexq1bi0DJwx_mJ-',
@@ -379,7 +497,9 @@ $result = $solver->recaptcha([
 ```
 
 ## Error handling
+
 If case of an error captch solver throws an exception. It's important to properly handle these cases. We recommend to use `try catch` to handle exceptions. 
+
 ```php
 try {
     $result = $solver->text('If tomorrow is Saturday, what day is today?');
@@ -393,6 +513,11 @@ try {
     // captcha is not solved so far
 }
 ```
+
+## Examples
+
+Examples of solving all supported captcha types are located in the [examples] directory.
+
 ## Get in touch
 
 <a href="mailto:support@2captcha.com"><img src="https://github.com/user-attachments/assets/539df209-7c85-4fa5-84b4-fc22ab93fac7" width="80" height="30"></a>
@@ -419,3 +544,8 @@ The graphics and trademarks included in this repository are not covered by the M
 [post options]: https://2captcha.com/2captcha-api#normal_post
 [list of supported languages]: https://2captcha.com/2captcha-api#language
 [examples directory]: /examples
+[examples]: /examples
+[PHP captcha solver]: https://2captcha.com/lang/php
+[Buy residential proxies]: https://2captcha.com/proxy/residential-proxies
+[residential proxies]: https://2captcha.com/proxy/residential-proxies
+[Quick start]: https://2captcha.com/proxy?openAddTrafficModal=true
