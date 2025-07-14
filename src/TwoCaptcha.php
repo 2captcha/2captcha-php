@@ -26,7 +26,7 @@ class TwoCaptcha
      *
      * @string
      */
-    private $server = 'http://2captcha.com';
+    private $server = 'https://2captcha.com';
 
     /**
      * ID of software developer. Developers who integrated their software
