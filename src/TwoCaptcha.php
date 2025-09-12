@@ -80,7 +80,11 @@ class TwoCaptcha
      */
     private $apiClient;
 
-    private $extendedResponse = 0;
+
+    /**
+     * JSON response
+     */
+    private $json = 0;
 
     /**
      * TwoCaptcha constructor.
@@ -101,7 +105,7 @@ class TwoCaptcha
         if (!empty($options['defaultTimeout'])) $this->defaultTimeout = $options['defaultTimeout'];
         if (!empty($options['recaptchaTimeout'])) $this->recaptchaTimeout = $options['recaptchaTimeout'];
         if (!empty($options['pollingInterval'])) $this->pollingInterval = $options['pollingInterval'];
-        if (!empty($options['extendedResponse'])) $this->extendedResponse = $options['extendedResponse'];
+        if (!empty($options['json'])) $this->json = $options['json'];
 
         $this->apiClient = new ApiClient($this->server);
     }
@@ -497,10 +501,10 @@ class TwoCaptcha
         $this->requireFileOrBase64($captcha);
 
         $captcha['method'] = empty($captcha['base64']) ? 'post' : 'base64';
-        $captcha['recaptcha']=1;
+        $captcha['recaptcha'] = 1;
         $captcha['canvas'] = 1;
 
-        if ( empty($captcha['hintText']) && empty($captcha['hintImg']) ) {
+        if (empty($captcha['hintText']) && empty($captcha['hintImg'])) {
             throw new ValidationException('At least one of parameters: hintText or hintImg required!');
         }
 
@@ -543,7 +547,8 @@ class TwoCaptcha
      * @throws TimeoutException
      * @throws ValidationException
      */
-    public function audio($captcha){
+    public function audio($captcha)
+    {
         if (is_string($captcha)) {
             if (!file_exists($captcha)) {
                 throw new ValidationException('File not found (' . $captcha . ')');
@@ -704,17 +709,36 @@ class TwoCaptcha
         $response = $this->res([
             'action' => 'get',
             'id'     => $id,
+            'json'   => $this->json,
         ]);
 
-        if ($response == 'CAPCHA_NOT_READY') {
-            return null;
-        }
 
-        if (mb_strpos($response, 'OK|') !== 0) {
-            throw new ApiException('Cannot recognise api response (' . $response . ')');
-        }
+        $jsonObj = json_decode($response, true);
 
-        return mb_substr($response, 3);
+        if (json_last_error() === JSON_ERROR_NONE) {
+            $request = $jsonObj['request'];
+            $status = $jsonObj['status'];
+
+
+            if ($request == "CAPCHA_NOT_READY") {
+                return null;
+            }
+
+            if ($status == 1) {
+                return $response;
+            }
+        } else {
+
+            if ($response == 'CAPCHA_NOT_READY') {
+                return null;
+            }
+
+            if (mb_strpos($response, 'OK|') !== 0) {
+                throw new ApiException('Cannot recognise api response (' . $response . ')');
+            }
+
+            return mb_substr($response, 3);
+        }
     }
 
     /**
