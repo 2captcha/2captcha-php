@@ -80,6 +80,8 @@ class TwoCaptcha
      */
     private $apiClient;
 
+    private $extendedResponse = 0;
+
     /**
      * TwoCaptcha constructor.
      * @param $options string|array
@@ -99,6 +101,7 @@ class TwoCaptcha
         if (!empty($options['defaultTimeout'])) $this->defaultTimeout = $options['defaultTimeout'];
         if (!empty($options['recaptchaTimeout'])) $this->recaptchaTimeout = $options['recaptchaTimeout'];
         if (!empty($options['pollingInterval'])) $this->pollingInterval = $options['pollingInterval'];
+        if (!empty($options['extendedResponse'])) $this->extendedResponse = $options['extendedResponse'];
 
         $this->apiClient = new ApiClient($this->server);
     }
