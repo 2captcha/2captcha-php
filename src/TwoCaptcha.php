@@ -689,13 +689,48 @@ class TwoCaptcha
 
         $response = $this->apiClient->in($captcha, $files);
 
+        $jsonObj = json_decode($response, true);
+
+        if (json_last_error() === JSON_ERROR_NONE) {
+            $request = $jsonObj['request'];
+            $status = $jsonObj['status'];
+
+            if ($request == "CAPCHA_NOT_READY") {
+                return null;
+            }
+
+            if ($status == 1) {
+                return $request;
+            }
+        } else {
+
+            if (mb_strpos($response, 'OK|') !== 0) {
+                throw new ApiException('Cannot recognise api response (' . $response . ')');
+            }
+
+            return mb_substr($response, 3);
+        }
+    }
+
+    /* victor todo: remove
+    public function send($captcha)
+    {
+        $this->sendAttachDefaultParams($captcha);
+
+        $files = $this->extractFiles($captcha);
+
+        $this->mapParams($captcha, $captcha['method']);
+        $this->mapParams($files, $captcha['method']);
+
+        $response = $this->apiClient->in($captcha, $files);
+
         if (mb_strpos($response, 'OK|') !== 0) {
             throw new ApiException('Cannot recognise api response (' . $response . ')');
         }
 
         return mb_substr($response, 3);
     }
-
+*/
     /**
      * Returns result of captcha if it was solved or `null`, if result is not ready
      *
@@ -712,7 +747,7 @@ class TwoCaptcha
             'json'   => $this->json,
         ]);
 
-
+        echo $response;
         $jsonObj = json_decode($response, true);
 
         if (json_last_error() === JSON_ERROR_NONE) {
