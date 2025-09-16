@@ -834,6 +834,7 @@ class TwoCaptcha
     private function sendAttachDefaultParams(&$captcha)
     {
         $captcha['key'] = $this->apiKey;
+        $captcha['json'] = $this->json;
 
         if ($this->callback) {
             if (!isset($captcha['callback'])) {

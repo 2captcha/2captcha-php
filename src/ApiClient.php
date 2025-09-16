@@ -18,7 +18,8 @@ class ApiClient
      * ApiClient constructor.
      * @param $options string
      */
-    public function __construct($options) {
+    public function __construct($options)
+    {
         if (is_string($options)) {
             $this->server = $options;
         }
@@ -101,7 +102,7 @@ class ApiClient
             throw new NetworkException(curl_error($this->curl));
         }
 
-        if (mb_strpos($response, 'ERROR_') === 0) {
+        if (strpos(json_encode($response), 'ERROR_') !== false) {
             throw new ApiException($response);
         }
 
