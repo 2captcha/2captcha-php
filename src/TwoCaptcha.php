@@ -747,7 +747,6 @@ class TwoCaptcha
             'json'   => $this->json,
         ]);
 
-        echo $response;
         $jsonObj = json_decode($response, true);
 
         if (json_last_error() === JSON_ERROR_NONE) {
