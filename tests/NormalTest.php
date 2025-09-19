@@ -12,7 +12,7 @@ class NormalTest extends AbstractWrapperTestCase
     {
         $this->checkIfCorrectParamsSendAndResultReturned([
             'params'     => $this->captchaImg,
-            'sendParams' => ['method' => 'post','soft_id' => '4585'],
+            'sendParams' => ['method' => 'post','soft_id' => '4585', 'json' => '0'],
             'sendFiles'  => ['file' => $this->captchaImg],
         ]);
     }
@@ -21,7 +21,7 @@ class NormalTest extends AbstractWrapperTestCase
     {
         $this->checkIfCorrectParamsSendAndResultReturned([
             'params'     => ['file' => $this->captchaImg],
-            'sendParams' => ['method' => 'post','soft_id' => '4585'],
+            'sendParams' => ['method' => 'post','soft_id' => '4585', 'json' => '0'],
             'sendFiles'  => ['file' => $this->captchaImg],
         ]);
     }
@@ -30,7 +30,7 @@ class NormalTest extends AbstractWrapperTestCase
     {
         $this->checkIfCorrectParamsSendAndResultReturned([
             'params'     => ['base64' => '...'],
-            'sendParams' => ['method' => 'base64', 'body' => '...','soft_id' => '4585'],
+            'sendParams' => ['method' => 'base64', 'body' => '...','soft_id' => '4585', 'json' => '0'],
             'sendFiles'  => [],
         ]);
     }

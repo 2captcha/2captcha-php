@@ -56,6 +56,7 @@ class ReCaptchaTest extends AbstractWrapperTestCase
             'action'    => 'verify',
             'min_score' => 0.3,
             'soft_id'   => '4585',
+            'json'      => '0'
         ];
 
         $this->checkIfCorrectParamsSendAndResultReturned([
