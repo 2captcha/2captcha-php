@@ -58,6 +58,7 @@ class CanvasTest extends AbstractWrapperTestCase
             'recaptcha'        => 1,
             'textinstructions' => $this->hintText,
             'soft_id'          => '4585',
+            'json'       => '0'
         ];
 
         $sendFiles = [

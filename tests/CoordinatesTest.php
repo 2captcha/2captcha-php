@@ -52,6 +52,7 @@ class CoordinatesTest extends AbstractWrapperTestCase
             'lang'               => 'en',
             'textinstructions'   => 'Select all images with an Orange',
             'soft_id'            => '4585',
+            'json'       => '0'
         ];
 
         $sendFiles = [

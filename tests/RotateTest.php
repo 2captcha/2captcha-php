@@ -25,6 +25,7 @@ class RotateTest extends AbstractWrapperTestCase
             'textinstructions' => 'Put the images in the correct way up',
             'body'             => '...',
             'soft_id'          => '4585',
+            'json'             => '0'
         ];
 
         $sendFiles = [

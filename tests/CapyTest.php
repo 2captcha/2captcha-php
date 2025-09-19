@@ -18,6 +18,7 @@ class CapyTest extends AbstractWrapperTestCase
             'captchakey' => 'PUZZLE_Abc1dEFghIJKLM2no34P56q7rStu8v',
             'pageurl'    => 'http://mysite.com/',
             'soft_id'    => '4585',
+            'json'       => '0'
         ];
 
         $this->checkIfCorrectParamsSendAndResultReturned([

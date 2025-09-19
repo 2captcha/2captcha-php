@@ -63,6 +63,7 @@ class NormalTest extends AbstractWrapperTestCase
             'lang'             => 'en',
             'textinstructions' => 'Type red symbols only',
             'soft_id'          => '4585',
+            'json'             => '0'
         ];
 
         $sendFiles = [
