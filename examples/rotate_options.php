@@ -5,7 +5,7 @@ set_time_limit(130);
 require(__DIR__ . '/../src/autoloader.php');
 
 $solver = new \TwoCaptcha\TwoCaptcha([
-    'apiKey'	=> 'YOUR_API_KEY',
+    'apiKey'	=> $argv[1],
     'server'	=> 'http://2captcha.com'
 ]);
 

@@ -613,19 +613,9 @@ class TwoCaptcha
      */
     public function vk($captcha)
     {
-        if (is_string($captcha)) {
-            $captcha = [
-                'file' => $captcha,
-            ];
-        }
-
-        $this->requireFileOrBase64($captcha);
-
-        $captcha['method'] = empty($captcha['base64']) ? 'post' : 'base64';
-
+        $captcha['method'] = 'vkimage';
         return $this->solve($captcha);
     }
-
 
     /**
      * Sends captcha to `/in.php` and waits for it's result.
