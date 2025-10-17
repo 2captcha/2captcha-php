@@ -613,6 +613,17 @@ class TwoCaptcha
      */
     public function vk($captcha)
     {
+        if (is_string($captcha)) {
+            if (!file_exists($captcha)) {
+                throw new ValidationException('File not found (' . $captcha . ')');
+            }
+            $body = file_get_contents($captcha);
+            $body = base64_encode($body);
+            $captcha = [
+                'body' => $body,
+            ];
+        }
+
         $captcha['method'] = 'vkimage';
         return $this->solve($captcha);
     }
