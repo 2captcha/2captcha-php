@@ -4,7 +4,7 @@ namespace TwoCaptcha\Tests;
 
 class VkTest extends AbstractWrapperTestCase
 {
-    protected $method = 'vk';
+    protected $method = 'vkImage';
 
 
     public function testAllParameters()

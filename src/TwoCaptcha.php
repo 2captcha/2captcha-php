@@ -611,7 +611,7 @@ class TwoCaptcha
      * @throws TimeoutException
      * @throws ValidationException
      */
-    public function vk($captcha)
+    public function vkImage($captcha)
     {
         if (is_string($captcha)) {
             if (!file_exists($captcha)) {
@@ -625,6 +625,13 @@ class TwoCaptcha
         }
 
         $captcha['method'] = 'vkimage';
+        return $this->solve($captcha);
+    }
+
+    public function vkCaptcha($captcha)
+    {
+        $captcha['method'] = 'vkcaptcha';
+
         return $this->solve($captcha);
     }
 
