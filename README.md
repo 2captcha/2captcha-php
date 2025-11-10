@@ -43,6 +43,7 @@ Examples of API requests for different captcha types are available on the [PHP c
     - [atbCAPTCHA](#atbcaptcha)
     - [DataDome](#datadome)
     - [CyberSiARA](#cybersiara)
+    - [Prosopo](#prosopo)
   - [Other methods](#other-methods)
     - [send / getResult](#send--getresult)
     - [balance](#balance)
@@ -444,6 +445,18 @@ $result = $solver->cybersiara([
 ]);
 ```
 
+### Prosopo
+
+<sup>[API method description.](https://2captcha.com/2captcha-api#prosopo)</sup>
+
+Use this method to bypass Prosopo.
+
+```php
+    $result = $solver->prosopo([
+        'sitekey' => '5EZVvsHMrKCFKp5NYNoTyDjTjetoVo1Z4UNNbTwJf1GfN6Xm',
+        'url'     => 'https://www.twickets.live/',
+    ]);
+```
 
 ## Other methods
 
