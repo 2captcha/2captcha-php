@@ -447,7 +447,7 @@ $result = $solver->cybersiara([
 
 ### Prosopo
 
-<sup>[API method description.](https://2captcha.com/2captcha-api#prosopo)</sup>
+<sup>[API method description.](https://2captcha.com/2captcha-api#prosopo-procaptcha)</sup>
 
 Use this method to bypass Prosopo.
 
