@@ -44,6 +44,7 @@ Examples of API requests for different captcha types are available on the [PHP c
     - [DataDome](#datadome)
     - [CyberSiARA](#cybersiara)
     - [Prosopo](#prosopo)
+    - [Temu](#temu)
   - [Other methods](#other-methods)
     - [send / getResult](#send--getresult)
     - [balance](#balance)
@@ -457,6 +458,23 @@ Use this method to bypass Prosopo.
         'url'     => 'https://www.twickets.live/',
     ]);
 ```
+
+
+### Temu
+
+<sup>[API method description.](https://2captcha.com/2captcha-api#temucaptcha)</sup>
+
+Use this method to bypass Temu.
+
+```php
+    $result = $solver->temu([
+        'body'  => $body,
+        'part1' => $part1,
+        'part2' => $part2,
+        'part3' => $part3,
+    ]);
+```
+
 
 ## Other methods
 

@@ -619,6 +619,23 @@ class TwoCaptcha
     }
 
     /**
+     * Wrapper for solving Temu
+     *
+     * @param $captcha
+     * @return \stdClass
+     * @throws ApiException
+     * @throws NetworkException
+     * @throws TimeoutException
+     * @throws ValidationException
+     */
+    public function temu($captcha)
+    {
+        $captcha['method'] = 'temuimage';
+
+        return $this->solve($captcha);
+    }
+
+    /**
      * Sends captcha to `/in.php` and waits for it's result.
      * This helper can be used insted of manual using of `send` and `getResult` functions.
      *
