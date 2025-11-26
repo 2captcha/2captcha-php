@@ -45,6 +45,7 @@ Examples of API requests for different captcha types are available on the [PHP c
     - [CyberSiARA](#cybersiara)
     - [Prosopo](#prosopo)
     - [Temu](#temu)
+    - [Captchafox](#captchafox)
   - [Other methods](#other-methods)
     - [send / getResult](#send--getresult)
     - [balance](#balance)
@@ -472,6 +473,24 @@ Use this method to bypass Temu.
         'part1' => $part1,
         'part2' => $part2,
         'part3' => $part3,
+    ]);
+```
+
+### Captchafox
+
+<sup>[API method description.](https://2captcha.com/2captcha-api#captchafox)</sup>
+
+Use this method to bypass Captchafox.
+
+```php
+    $result = $solver->captchafox([
+        'sitekey' => 'sk_ILKWNruBBVKDOM7dZs59KHnDLEWiH',
+        'url'     => 'https://mysite.com/page/with/captchafox',
+        'userAgent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/115.0.0.0 Safari/537.36',
+        'proxy'     => [
+            'type' => 'HTTPS',
+            'uri'  => 'login:password@IP_address:PORT',
+        ],
     ]);
 ```
 
