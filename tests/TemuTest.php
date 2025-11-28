@@ -6,8 +6,6 @@ class TemuTest extends AbstractWrapperTestCase
 {
     protected $method = 'temu';
 
-    private $captchaImg = __DIR__ . '/../examples/images/normal.jpg';
-
     public function test()
     {
         $body = base64_encode(file_get_contents(__DIR__ . '/../examples/resources/temu/body.png'));
