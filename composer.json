@@ -25,7 +25,10 @@
         "Cutcaptcha",
         "Friendly Captcha",
         "atbCAPTCHA",
-        "DataDome"
+        "DataDome",
+        "Prosopo",
+        "Temu",
+        "Captchafox"
     ],
     "license": "MIT",
     "authors": [
