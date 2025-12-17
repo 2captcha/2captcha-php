@@ -4,6 +4,7 @@ on:
   push:
     tags:
       - 'v*'
+  workflow_dispatch:
 
 jobs:
   test:
@@ -20,7 +21,7 @@ jobs:
           coverage: none
 
       - name: Install dependencies
-        run: composer install --no-interaction --no-progress --prefer-dist
+        run: composer update --no-interaction --no-progress --prefer-dist
 
       - name: Run tests
         run: composer test
@@ -37,4 +38,3 @@ jobs:
             -H "Content-Type: application/json" \
             -d "{\"repository\":{\"url\":\"https://github.com/2captcha/2captcha-php\"}}" \
             "https://packagist.org/api/update-package?username=${{ secrets.PACKAGIST_USERNAME }}&apiToken=${{ secrets.PACKAGIST_API_TOKEN }}"
-
