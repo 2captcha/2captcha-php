@@ -610,6 +610,40 @@ class TwoCaptcha
     }
 
     /**
+     * Wrapper for solving vk captcha (image)
+     *
+     * @param $captcha
+     * @return \stdClass
+     * @throws ApiException
+     * @throws NetworkException
+     * @throws TimeoutException
+     * @throws ValidationException
+     */
+    public function vkimage($captcha)
+    {
+        if (is_string($captcha)) {
+            if (!file_exists($captcha)) {
+                throw new ValidationException('File not found (' . $captcha . ')');
+            }
+            $body = file_get_contents($captcha);
+            $body = base64_encode($body);
+            $captcha = [
+                'body' => $body,
+            ];
+        }
+
+        $captcha['method'] = 'vkimage';
+        return $this->solve($captcha);
+    }
+
+    public function vkcaptcha($captcha)
+    {
+        $captcha['method'] = 'vkcaptcha';
+
+        return $this->solve($captcha);
+    }
+
+    /**
      * Sends captcha to `/in.php` and waits for it's result.
      * This helper can be used insted of manual using of `send` and `getResult` functions.
      *

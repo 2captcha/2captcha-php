@@ -43,6 +43,8 @@ Examples of API requests for different captcha types are available on the [PHP c
     - [atbCAPTCHA](#atbcaptcha)
     - [DataDome](#datadome)
     - [CyberSiARA](#cybersiara)
+    - [VK Captcha](#vk-captcha)
+    - [VK Image](#vk-image)
   - [Other methods](#other-methods)
     - [send / getResult](#send--getresult)
     - [balance](#balance)
@@ -446,17 +448,36 @@ $result = $solver->cybersiara([
 ]);
 ```
 
-### hCaptcha
+### VK Image
 
-<sup>[API method description.](https://2captcha.com/2captcha-api#hCaptcha)</sup>
+<sup>[API method description.](https://2captcha.com/2captcha-api#vkcaptcha)</sup>
 
-Use this method to bypass hCaptcha.
+We offer two methods to solve this type of captcha - token-based and image-based.
+
+We use the body (image in base64 format) or file (image as file) and steps parameters.
+You can get both values from the response to the request https://api.vk.com/method/captchaNotRobot.getContent?v={API_VER} when loading the captcha widget on the page.
 
 ```php
-$result = $solver->hcaptcha([
-    'sitekey' => 'c0421d06-b92e-47fc-ab9a-5caa43c04538',
-    'url'     => 'https://api.solvecaptcha.com/demo/hcaptcha'
-]);
+    $result = $solver->vkImage([
+        'body' => base64_encode(file_get_contents(__DIR__ . '/images/vk.jpg')),
+        'steps' => '[5,12,22,24,21,23,10,7,2,8,19,18,8,24,21,22,11,14,16,5,18,20,4,21,12,6,0,0,11,12,8,20,19,3,14,8,9,13,16,24,18,3,2,23,8,12,6,1,11,0,20,15,19,22,17,24,8,0,12,5,19,14,11,6,7,14,23,24,23,20,4,20,6,12,4,17,4,18,6,20,17,5,23,7,10,2,8,9,5,4,17,24,11,14,4,10,12,22,21,2]',
+    ]);
+```
+### VK Captcha
+
+<sup>[API method description.](https://2captcha.com/2captcha-api#vk-captcha)</sup>
+
+Token-based method requires redirect_uri parameter, as well as proxy and userAgent. The value of the redirect_uri parameter can be found in the response to requests to the VK API that return captchas.
+
+```php
+$tokenBasedResult = $solver->vkCaptcha([
+        'redirect_uri' => 'https://id.vk.com/not_robot_captcha?domain=vk.com&session_token=eyJ....HGsc5B4LyvjA&variant=popup&blank=1',
+        'userAgent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/115.0.0.0 Safari/537.36',
+        'proxy' => [
+            'type' => 'HTTPS',
+            'uri' => 'login:password@IP_address:PORT',
+        ],
+    ]);
 ```
 
 ## Other methods

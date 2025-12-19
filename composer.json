@@ -25,7 +25,9 @@
         "Cutcaptcha",
         "Friendly Captcha",
         "atbCAPTCHA",
-        "DataDome"
+        "DataDome",
+        "vkCaptcha",
+        "vkImage"
     ],
     "license": "MIT",
     "authors": [
