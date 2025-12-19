@@ -12,7 +12,7 @@ class GridTest extends AbstractWrapperTestCase
     {
         $this->checkIfCorrectParamsSendAndResultReturned([
             'params'     => $this->captchaImg,
-            'sendParams' => ['method' => 'post','soft_id' => '4585'],
+            'sendParams' => ['method' => 'post','soft_id' => '4585', 'json' => '0'],
             'sendFiles'  => ['file' => $this->captchaImg],
         ]);
     }
@@ -21,7 +21,7 @@ class GridTest extends AbstractWrapperTestCase
     {
         $this->checkIfCorrectParamsSendAndResultReturned([
             'params'     => ['file' => $this->captchaImg],
-            'sendParams' => ['method' => 'post','soft_id' => '4585'],
+            'sendParams' => ['method' => 'post','soft_id' => '4585', 'json' => '0'],
             'sendFiles'  => ['file' => $this->captchaImg],
         ]);
     }
@@ -30,7 +30,7 @@ class GridTest extends AbstractWrapperTestCase
     {
         $this->checkIfCorrectParamsSendAndResultReturned([
             'params'     => ['base64' => '...'],
-            'sendParams' => ['method' => 'base64', 'body' => '...','soft_id' => '4585'],
+            'sendParams' => ['method' => 'base64', 'body' => '...','soft_id' => '4585', 'json' => '0'],
             'sendFiles'  => [],
         ]);
     }
@@ -59,6 +59,7 @@ class GridTest extends AbstractWrapperTestCase
             'lang'             => 'en',
             'textinstructions' => 'Select all images with an Orange',
             'soft_id'          => '4585',
+            'json'       => '0'
         ];
 
         $sendFiles = [

@@ -21,6 +21,7 @@ class AudioTest extends AbstractWrapperTestCase
             'method'  => 'audio',
             'body'    => base64_encode(file_get_contents($audio)),
             'soft_id' => '4585',
+            'json'    => '0'
         ];
 
 
@@ -47,6 +48,7 @@ class AudioTest extends AbstractWrapperTestCase
             'body'    => base64_encode(file_get_contents($audio)),
             'lang'    => 'ru',
             'soft_id' => '4585',
+            'json'    => '0'
         ];
 
 

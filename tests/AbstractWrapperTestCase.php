@@ -23,6 +23,7 @@ abstract class AbstractWrapperTestCase extends TestCase
         $apiKey     = 'API_KEY';
         $captchaId  = '123';
         $code       = '2763';
+        $json       = '0';
 
         $apiClient = $this->createMock(ApiClient::class);
 
@@ -40,7 +41,7 @@ abstract class AbstractWrapperTestCase extends TestCase
         $apiClient
             ->expects($this->once())
             ->method('res')
-            ->with($this->equalTo(['action' => 'get', 'id' => $captchaId, 'key' => $apiKey]))
+            ->with($this->equalTo(['action' => 'get', 'id' => $captchaId, 'key' => $apiKey, 'json' => $json]))
             ->willReturn('OK|' . $code);
 
         $solver = new TwoCaptcha([

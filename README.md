@@ -87,6 +87,7 @@ $solver = new \TwoCaptcha\TwoCaptcha([
     'defaultTimeout'   => 120,
     'recaptchaTimeout' => 600,
     'pollingInterval'  => 10,
+    'json'             => 1,
 ]);
 ```
 
@@ -94,11 +95,12 @@ $solver = new \TwoCaptcha\TwoCaptcha([
 
 | Option           | Default value | Description                                                                                                                                        |
 | ---------------- | ------------- | -------------------------------------------------------------------------------------------------------------------------------------------------- |
-| softId           | 4585             | your software ID obtained after publishing in [2captcha software catalog]                                                                          |
+| softId           | 4585          | your software ID obtained after publishing in [2captcha software catalog]                                                                          |
 | callback         | -             | URL of your web-sever that receives the captcha recognition result. The URl should be first registered in [pingback settings] of your account      |
 | defaultTimeout   | 120           | Polling timeout in seconds for all captcha types except reCAPTCHA. Defines how long the module tries to get the answer from `res.php` API endpoint |
 | recaptchaTimeout | 600           | Polling timeout for reCAPTCHA in seconds. Defines how long the module tries to get the answer from `res.php` API endpoint                          |
 | pollingInterval  | 10            | Interval in seconds between requests to `res.php` API endpoint, setting values less than 5 seconds is not recommended                              |
+| json             | 0             | Json or String format response from `res.php` API endpoint, json = 1 returns JSON format response                                                  |
 
 > [!IMPORTANT]
 > Once `callback` is defined for `TwoCaptcha` instance, all methods return only the captcha ID and DO NOT poll the API to get the result. The result will be sent to the callback URL.
@@ -477,7 +479,6 @@ $tokenBasedResult = $solver->vkCaptcha([
         ],
     ]);
 ```
-
 
 ## Other methods
 

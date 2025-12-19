@@ -1,0 +1,22 @@
+name: Publish to Packagist
+
+on:
+  push:
+    tags:
+      - 'v*'
+  workflow_dispatch:
+
+jobs:
+  publish:
+    name: Notify Packagist
+    runs-on: ubuntu-latest
+    # Для push по тегу публикация идёт автоматически.
+    # Для ручного запуска важно, чтобы на репозитории уже был нужный тег.
+    if: startsWith(github.ref, 'refs/tags/') || github.event_name == 'workflow_dispatch'
+    steps:
+      - name: Call Packagist API
+        run: |
+          curl -sS -X POST \
+            -H "Content-Type: application/json" \
+            -d "{\"repository\":{\"url\":\"https://github.com/2captcha/2captcha-php\"}}" \
+            "https://packagist.org/api/update-package?username=${{ secrets.PACKAGIST_USERNAME }}&apiToken=${{ secrets.PACKAGIST_API_TOKEN }}"
