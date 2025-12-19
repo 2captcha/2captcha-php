@@ -28,6 +28,7 @@ class ReCaptchaTest extends AbstractWrapperTestCase
             'proxy'     => 'username:str0ngP@$$W0rd@1.2.3.4:4321',
             'proxytype' => 'HTTPS',
             'soft_id'   => '4585',
+            'json'      => '0'
         ];
 
         $this->checkIfCorrectParamsSendAndResultReturned([
@@ -55,6 +56,7 @@ class ReCaptchaTest extends AbstractWrapperTestCase
             'action'    => 'verify',
             'min_score' => 0.3,
             'soft_id'   => '4585',
+            'json'      => '0'
         ];
 
         $this->checkIfCorrectParamsSendAndResultReturned([
