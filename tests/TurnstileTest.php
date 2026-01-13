@@ -24,6 +24,7 @@ class TurnstileTest extends AbstractWrapperTestCase
             'proxy'      => 'username:str0ngP@$$W0rd@1.2.3.4:4321',
             'proxytype'  => 'HTTPS',
             'soft_id'    => '4585',
+            'json'       => '0'
         ];
 
         $this->checkIfCorrectParamsSendAndResultReturned([

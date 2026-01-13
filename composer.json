@@ -29,6 +29,8 @@
         "Prosopo",
         "Temu",
         "Captchafox"
+        "vkCaptcha",
+        "vkImage"
     ],
     "license": "MIT",
     "authors": [
