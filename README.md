@@ -43,6 +43,9 @@ Examples of API requests for different captcha types are available on the [PHP c
     - [atbCAPTCHA](#atbcaptcha)
     - [DataDome](#datadome)
     - [CyberSiARA](#cybersiara)
+    - [Prosopo](#prosopo)
+    - [Temu](#temu)
+    - [Captchafox](#captchafox)
     - [VK Captcha](#vk-captcha)
     - [VK Image](#vk-image)
   - [Other methods](#other-methods)
@@ -446,6 +449,53 @@ $result = $solver->cybersiara([
     'pageurl' => 'https://demo.mycybersiara.com/',
     'userAgent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/115.0.0.0 Safari/537.36',
 ]);
+```
+
+### Prosopo
+
+<sup>[API method description.](https://2captcha.com/2captcha-api#prosopo-procaptcha)</sup>
+
+Use this method to bypass Prosopo.
+
+```php
+    $result = $solver->prosopo([
+        'sitekey' => '5EZVvsHMrKCFKp5NYNoTyDjTjetoVo1Z4UNNbTwJf1GfN6Xm',
+        'url'     => 'https://www.twickets.live/',
+    ]);
+```
+
+
+### Temu
+
+<sup>[API method description.](https://2captcha.com/2captcha-api#temucaptcha)</sup>
+
+Use this method to bypass Temu.
+
+```php
+    $result = $solver->temu([
+        'body'  => $body,
+        'part1' => $part1,
+        'part2' => $part2,
+        'part3' => $part3,
+    ]);
+```
+
+### Captchafox
+
+<sup>[API method description.](https://2captcha.com/2captcha-api#captchafox)</sup>
+
+Use this method to bypass Captchafox.
+
+```php
+    $result = $solver->captchafox([
+        'sitekey' => 'sk_ILKWNruBBVKDOM7dZs59KHnDLEWiH',
+        'url'     => 'https://mysite.com/page/with/captchafox',
+        'userAgent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/115.0.0.0 Safari/537.36',
+        'proxy'     => [
+            'type' => 'HTTPS',
+            'uri'  => 'login:password@IP_address:PORT',
+        ],
+    ]);
 ```
 
 ### VK Image
