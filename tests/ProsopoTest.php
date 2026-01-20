@@ -23,7 +23,8 @@ class ProsopoTest extends AbstractWrapperTestCase
             'pageurl'    => 'https://www.twickets.live/',
             'proxy'      => 'username:str0ngP@$$W0rd@1.2.3.4:4321',
             'proxytype'  => 'HTTPS',
-            'soft_id'    => '4585',
+            'soft_id' => 4585,
+            'json'    => 0
         ];
 
         $this->checkIfCorrectParamsSendAndResultReturned([

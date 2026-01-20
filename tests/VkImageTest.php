@@ -19,7 +19,8 @@ class VkImageTest extends AbstractWrapperTestCase
         $sendParams = [
             'method'           => 'vkimage',
             'body'             => '...',
-            'soft_id'          => '4585',
+            'soft_id' => 4585,
+            'json'    => 0
         ];
 
         $sendFiles = [

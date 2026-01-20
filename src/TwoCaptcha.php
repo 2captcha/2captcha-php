@@ -656,6 +656,8 @@ class TwoCaptcha
     public function captchafox($captcha)
     {
         $captcha['method'] = 'captchafox';
+
+        return $this->solve($captcha);
     }
   
     public function vkimage($captcha)

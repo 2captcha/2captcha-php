@@ -27,7 +27,8 @@ class TemuTest extends AbstractWrapperTestCase
             'part1'   => $part1,
             'part2'   => $part2,
             'part3'   => $part3,
-            'soft_id' => '4585',
+            'soft_id' => 4585,
+            'json'    => 0
         ];
 
 
