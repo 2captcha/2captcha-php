@@ -491,6 +491,7 @@ Use this method to bypass Captchafox.
         'sitekey' => 'sk_ILKWNruBBVKDOM7dZs59KHnDLEWiH',
         'url'     => 'https://mysite.com/page/with/captchafox',
         'userAgent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/115.0.0.0 Safari/537.36',
+        'api_server' => 'https://mam.example.com',
         'proxy'     => [
             'type' => 'HTTPS',
             'uri'  => 'login:password@IP_address:PORT',
