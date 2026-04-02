@@ -48,6 +48,7 @@ Examples of API requests for different captcha types are available on the [PHP c
     - [Captchafox](#captchafox)
     - [VK Captcha](#vk-captcha)
     - [VK Image](#vk-image)
+    - [Altchacaptcha](#altchacaptcha)
   - [Other methods](#other-methods)
     - [send / getResult](#send--getresult)
     - [balance](#balance)
@@ -528,6 +529,19 @@ $tokenBasedResult = $solver->vkCaptcha([
             'type' => 'HTTPS',
             'uri' => 'login:password@IP_address:PORT',
         ],
+    ]);
+```
+
+### Altchacaptcha
+
+<sup>[API method description.](https://2captcha.com/2captcha-api#altchacaptcha)</sup>
+
+Use this method to bypass Altchacaptcha.
+
+```php
+    $result = $solver->altchacaptcha([
+        'challenge_url' => 'https://.../captcha/api/altcha/challenge',
+        'pageurl'     => 'https://site.com/',
     ]);
 ```
 

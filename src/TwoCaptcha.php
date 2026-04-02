@@ -644,7 +644,7 @@ class TwoCaptcha
     }
 
     /**
-     * Wrapper for solving Temu
+     * Wrapper for solving Captchafox
      *
      * @param $captcha
      * @return \stdClass
@@ -660,6 +660,13 @@ class TwoCaptcha
         return $this->solve($captcha);
     }
   
+    public function altchacaptcha($captcha)
+    {
+        $captcha['method'] = 'altcha';
+
+        return $this->solve($captcha);
+    }
+
     public function vkimage($captcha)
     {
         if (is_string($captcha)) {
