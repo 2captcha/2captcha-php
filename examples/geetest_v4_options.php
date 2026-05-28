@@ -20,6 +20,7 @@ try {
         'captchaId' => '72bf15796d0b69c43867452fea615052',
         'apiServer' => 'api.geetest.com',
         'url'       => 'https://mysite.com/captcha.html',
+        'risk_type' => 'slide|1779953415.471155|dfb79e61dd2c437b8e524291ce692d58|a322dcdc9f533fb86aa1d8c275c52981e1528f53fd62a03ccb42608ca0b3c075',
         'proxy'     => [
             'type' => 'HTTPS',
             'uri'  => 'login:password@IP_address:PORT',
