@@ -691,6 +691,13 @@ class TwoCaptcha
         return $this->solve($captcha);
     }
 
+    public function binance($captcha)
+    {
+        $captcha['method'] = 'binance';
+
+        return $this->solve($captcha);
+    }
+
     /**
      * Sends captcha to `/in.php` and waits for it's result.
      * This helper can be used insted of manual using of `send` and `getResult` functions.

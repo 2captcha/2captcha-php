@@ -49,6 +49,7 @@ Examples of API requests for different captcha types are available on the [PHP c
     - [VK Captcha](#vk-captcha)
     - [VK Image](#vk-image)
     - [Altchacaptcha](#altchacaptcha)
+    - [Binancecaptcha](#binancecaptcha)
   - [Other methods](#other-methods)
     - [send / getResult](#send--getresult)
     - [balance](#balance)
@@ -542,6 +543,20 @@ Use this method to bypass Altchacaptcha.
     $result = $solver->altchacaptcha([
         'challenge_url' => 'https://.../captcha/api/altcha/challenge',
         'pageurl'     => 'https://site.com/',
+    ]);
+```
+
+### Binancecaptcha
+
+<sup>[API method description.](https://2captcha.com/2captcha-api#binance)</sup>
+
+Use this method to bypass binance.
+
+```php
+    $result = $solver->binance([
+        'sitekey' => 'login',
+        'url'     => 'https://example.com/page-with-binance',
+        'validate_id' => 'cb0bfef...e54ecd57b'
     ]);
 ```
 
