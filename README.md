@@ -50,6 +50,7 @@ Examples of API requests for different captcha types are available on the [PHP c
     - [VK Image](#vk-image)
     - [Altchacaptcha](#altchacaptcha)
     - [Binancecaptcha](#binancecaptcha)
+    - [Yidun](#yidun)
   - [Other methods](#other-methods)
     - [send / getResult](#send--getresult)
     - [balance](#balance)
@@ -550,7 +551,7 @@ Use this method to bypass Altchacaptcha.
 
 <sup>[API method description.](https://2captcha.com/2captcha-api#binance)</sup>
 
-Use this method to bypass binance.
+Use this method to bypass Binance.
 
 ```php
     $result = $solver->binance([
@@ -559,6 +560,20 @@ Use this method to bypass binance.
         'validate_id' => 'cb0bfef...e54ecd57b'
     ]);
 ```
+
+### Yidun
+
+<sup>[API method description.](https://2captcha.com/2captcha-api#yidun)</sup>
+
+Use this method to bypass Yidun.
+
+```php
+    $result = $solver->yidun([
+        'sitekey' => '0f743r3g1...8rz3grz0ym5',
+        'url'     => 'https://example.com/page-with-yidun'
+    ]);
+```
+
 
 ## Other methods
 

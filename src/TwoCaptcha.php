@@ -698,6 +698,13 @@ class TwoCaptcha
         return $this->solve($captcha);
     }
 
+    public function yidun($captcha)
+    {
+        $captcha['method'] = 'yidun';
+
+        return $this->solve($captcha);
+    }
+
     /**
      * Sends captcha to `/in.php` and waits for it's result.
      * This helper can be used insted of manual using of `send` and `getResult` functions.
