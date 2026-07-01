@@ -51,6 +51,7 @@ Examples of API requests for different captcha types are available on the [PHP c
     - [Altchacaptcha](#altchacaptcha)
     - [Binancecaptcha](#binancecaptcha)
     - [Yidun](#yidun)
+    - [Alibaba](#alibaba)
   - [Other methods](#other-methods)
     - [send / getResult](#send--getresult)
     - [balance](#balance)
@@ -573,6 +574,22 @@ Use this method to bypass Yidun.
         'url'     => 'https://example.com/page-with-yidun'
     ]);
 ```
+
+### Alibaba
+
+<sup>[API method description.](https://2captcha.com/2captcha-api#alibaba)</sup>
+
+Use this method to bypass Alibaba captcha.
+
+```php
+    $result = $solver->alibaba([
+        'url'     => 'https://example.com/page-with-alibaba',
+        'sceneId' => 'bxs_login',
+        'prefix'  => 'a',
+    ]);
+```
+
+The result contains a JSON token with `sceneId`, `certifyId`, `deviceToken`, and `data` fields.
 
 
 ## Other methods

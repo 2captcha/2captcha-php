@@ -706,6 +706,23 @@ class TwoCaptcha
     }
 
     /**
+     * Wrapper for solving Alibaba captcha
+     *
+     * @param $captcha
+     * @return \stdClass
+     * @throws ApiException
+     * @throws NetworkException
+     * @throws TimeoutException
+     * @throws ValidationException
+     */
+    public function alibaba($captcha)
+    {
+        $captcha['method'] = 'alibaba';
+
+        return $this->solve($captcha);
+    }
+
+    /**
      * Sends captcha to `/in.php` and waits for it's result.
      * This helper can be used insted of manual using of `send` and `getResult` functions.
      *
