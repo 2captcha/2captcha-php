@@ -52,6 +52,7 @@ Examples of API requests for different captcha types are available on the [PHP c
     - [Binancecaptcha](#binancecaptcha)
     - [Yidun](#yidun)
     - [Alibaba](#alibaba)
+    - [Basilisk](#basilisk)
   - [Other methods](#other-methods)
     - [send / getResult](#send--getresult)
     - [balance](#balance)
@@ -590,6 +591,19 @@ Use this method to bypass Alibaba captcha.
 ```
 
 The result contains a JSON token with `sceneId`, `certifyId`, `deviceToken`, and `data` fields.
+
+### Basilisk
+
+<sup>[API method description.](https://2captcha.com/2captcha-api#basilisk)</sup>
+
+Use this method to bypass Basilisk captcha.
+
+```php
+    $result = $solver->basilisk([
+        'sitekey' => 'SITE_KEY',
+        'url'     => 'https://example.com/page-with-basilisk',
+    ]);
+```
 
 
 ## Other methods
