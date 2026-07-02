@@ -53,6 +53,7 @@ Examples of API requests for different captcha types are available on the [PHP c
     - [Yidun](#yidun)
     - [Alibaba](#alibaba)
     - [Basilisk](#basilisk)
+    - [Hunt](#hunt)
   - [Other methods](#other-methods)
     - [send / getResult](#send--getresult)
     - [balance](#balance)
@@ -602,6 +603,23 @@ Use this method to bypass Basilisk captcha.
     $result = $solver->basilisk([
         'sitekey' => 'SITE_KEY',
         'url'     => 'https://example.com/page-with-basilisk',
+    ]);
+```
+
+### Hunt
+
+<sup>[API method description.](https://2captcha.com/2captcha-api#hunt)</sup>
+
+Use this method to bypass Hunt captcha. Note that a proxy is required — there is no proxyless variant for this captcha type.
+
+```php
+    $result = $solver->hunt([
+        'url'       => 'https://example.com/page-with-hunt',
+        'apiGetLib' => 'https://example.com/hd-api/external/apps/app-id/api.js',
+        'proxy'     => [
+            'type' => 'HTTPS',
+            'uri'  => 'login:password@IP_address:PORT',
+        ],
     ]);
 ```
 
