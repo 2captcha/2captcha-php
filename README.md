@@ -54,6 +54,7 @@ Examples of API requests for different captcha types are available on the [PHP c
     - [Alibaba](#alibaba)
     - [Basilisk](#basilisk)
     - [Hunt](#hunt)
+    - [TSPD](#tspd)
   - [Other methods](#other-methods)
     - [send / getResult](#send--getresult)
     - [balance](#balance)
@@ -617,6 +618,24 @@ Use this method to bypass Hunt captcha. Note that a proxy is required — there 
         'url'       => 'https://example.com/page-with-hunt',
         'apiGetLib' => 'https://example.com/hd-api/external/apps/app-id/api.js',
         'proxy'     => [
+            'type' => 'HTTPS',
+            'uri'  => 'login:password@IP_address:PORT',
+        ],
+    ]);
+```
+
+### TSPD
+
+<sup>[API method description.](https://2captcha.com/2captcha-api#tspd)</sup>
+
+Use this method to bypass TSPD captcha. A proxy is required — there is no proxyless variant. The result contains updated cookies (`tspd_101_DID` and related fields) rather than a token.
+
+```php
+    $result = $solver->tspd([
+        'url'            => 'https://example.com/page-with-tspd',
+        'tspdcookie'     => 'tspd_101=abcdef1234567890;',
+        'htmlPageBase64' => base64_encode(file_get_contents('path/to/challenge-page.html')),
+        'proxy'          => [
             'type' => 'HTTPS',
             'uri'  => 'login:password@IP_address:PORT',
         ],
