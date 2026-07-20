@@ -587,7 +587,7 @@ Use this method to bypass Alibaba captcha.
 ```php
     $result = $solver->alibaba([
         'url'     => 'https://example.com/page-with-alibaba',
-        'sceneId' => 'bxs_login',
+        'scene_id' => 'bxs_login',
         'prefix'  => 'a',
     ]);
 ```
@@ -616,7 +616,7 @@ Use this method to bypass Hunt captcha. Note that a proxy is required — there 
 ```php
     $result = $solver->hunt([
         'url'       => 'https://example.com/page-with-hunt',
-        'apiGetLib' => 'https://example.com/hd-api/external/apps/app-id/api.js',
+        'api_get_lib' => 'https://example.com/hd-api/external/apps/app-id/api.js',
         'proxy'     => [
             'type' => 'HTTPS',
             'uri'  => 'login:password@IP_address:PORT',
@@ -633,8 +633,8 @@ Use this method to bypass TSPD captcha. A proxy is required — there is no prox
 ```php
     $result = $solver->tspd([
         'url'            => 'https://example.com/page-with-tspd',
-        'tspdcookie'     => 'tspd_101=abcdef1234567890;',
-        'htmlPageBase64' => base64_encode(file_get_contents('path/to/challenge-page.html')),
+        'tspd_cookie'     => 'tspd_101=abcdef1234567890;',
+        'html_page_base64' => 'PCFET0NUWVBFIGh0bWw+...',
         'proxy'          => [
             'type' => 'HTTPS',
             'uri'  => 'login:password@IP_address:PORT',
