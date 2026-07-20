@@ -30,7 +30,12 @@
         "Temu",
         "Captchafox",
         "vkCaptcha",
-        "vkImage"
+        "vkImage",
+        "alibaba",
+        "yidun",
+        "tspd",
+        "hunt",
+        "basilisk"
     ],
     "license": "MIT",
     "authors": [
