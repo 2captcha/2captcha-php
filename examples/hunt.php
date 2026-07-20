@@ -9,7 +9,7 @@ $solver = new TwoCaptcha($argv[1]);
 try {
     $result = $solver->hunt([
         'url'       => 'https://example.com/page-with-hunt',
-        'apiGetLib' => 'https://example.com/hd-api/external/apps/app-id/api.js',
+        'api_get_lib' => 'https://example.com/hd-api/external/apps/app-id/api.js',
         'proxy'     => [
             'type' => 'HTTPS',
             'uri'  => 'login:password@IP_address:PORT',

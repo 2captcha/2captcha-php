@@ -9,8 +9,8 @@ $solver = new TwoCaptcha($argv[1]);
 try {
     $result = $solver->tspd([
         'url'            => 'https://example.com/page-with-tspd',
-        'tspdcookie'     => 'tspd_101=abcdef1234567890;',
-        'htmlPageBase64' => base64_encode(file_get_contents('path/to/challenge-page.html')),
+        'tspd_cookie'     => 'tspd_101=abcdef1234567890;',
+        'html_page_base64' => 'PCFET0NUWVBFIGh0bWw+...',
         'proxy'          => [
             'type' => 'HTTPS',
             'uri'  => 'login:password@IP_address:PORT',
