@@ -20,7 +20,7 @@ class ApiClient
         curl_setopt($this->curl, CURLOPT_HTTPHEADER, array('Accept: application/json', 'Content-Type: application/json'));
         curl_setopt($this->curl, CURLOPT_RETURNTRANSFER, true);
 
-        curl_setopt($this->curl, CURLOPT_POSTFIELDS, $data);
+        curl_setopt($this->curl, CURLOPT_POSTFIELDS, json_encode($data));
 
         $resp = curl_exec($this->curl);
         //curl_close($curl);
