@@ -1,5 +1,6 @@
 #PHP and development related
 .idea
+.vscode
 /vendor
 composer.phar
 

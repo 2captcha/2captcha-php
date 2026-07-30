@@ -4,15 +4,45 @@ namespace TwoCaptcha\Generic;
 
 class ApiClient
 {
+    private $softId = 4585;
     public $apiKey;
     private $curl;
+    private $createTaskUri = "https://api.rucaptcha.com/createTask";
 
     public function __construct(string $apiKey)
     {
         $this->apiKey = $apiKey;
     }
 
-    function request($data, $uri) {
+    private function doRequest($uri, $data) {
+        $response = $this->request($uri, $data);
+
+        echo $response;
+        $responseJson = json_decode($response);
+
+        return $responseJson;
+    }
+
+    private function createTask($data) {
+        echo "CreateTask Request";
+        return $this->doRequest($this->createTaskUri, $data);
+    }
+
+    public function solve($data) {
+        $data["softId"] = $this->softId;
+        $response = $this->createTask($data);
+        //echo $response;
+        $taskId = $response->taskId;
+        echo $taskId;
+/*
+        if (jsonObject.getJSONObject("task").has("callbackUrl")
+                && !jsonObject.getJSONObject("task").getString("callbackUrl").isEmpty())
+            return responseJsonObject;
+        return getTaskResult(this.taskId);
+        */
+    }
+
+    function request($uri, $data) {
 
         if (!$this->curl) $this->curl = curl_init();
 
@@ -27,18 +57,6 @@ class ApiClient
 
         return $resp;
     }
-/*
-        public function solve($data) {
-        jsonObject.put("softId", softId);
-        JSONObject responseJsonObject = createTask(jsonObject);
-        this.taskId = responseJsonObject.getLong("taskId");
-
-        if (jsonObject.getJSONObject("task").has("callbackUrl")
-                && !jsonObject.getJSONObject("task").getString("callbackUrl").isEmpty())
-            return responseJsonObject;
-        return getTaskResult(this.taskId);
-    }
-    */
 }
 /*
 $url = "https://reqbin.com/echo/post/json";

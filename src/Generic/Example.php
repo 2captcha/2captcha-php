@@ -1,4 +1,5 @@
 <?php
+
 use TwoCaptcha\Generic\ApiClient;
 
 set_time_limit(130);
@@ -16,18 +17,15 @@ $dataInner = [
     'comment' => 'If tomorrow is Saturday, what day is today?'
 ];
 
-        $data = [
+$data = [
     'clientKey' => $argv[1],
     'languagePool' => 'en',
     'task' => $dataInner
 ];
 
-$createTaskUri = "https://api.rucaptcha.com/createTask";
-
 try {
 
-    $result = $solver->request($data, $createTaskUri);
-
+    $result = $solver->solve($data);
 } catch (\Exception $e) {
     die($e->getMessage());
 }
