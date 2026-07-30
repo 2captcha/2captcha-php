@@ -3,7 +3,7 @@ use TwoCaptcha\Generic\ApiClient;
 
 set_time_limit(130);
 
-require(__DIR__ . '/../src/autoloader.php');
+require(__DIR__ . '/../autoloader.php');
 
 //$argv[1] = YOUR_API_KEY
 $solver = new ApiClient($argv[1]);
@@ -19,14 +19,14 @@ $dataInner = [
         $data = [
     'clientKey' => $argv[1],
     'languagePool' => 'en',
-    'task' => $this->dataInner
+    'task' => $dataInner
 ];
 
 $createTaskUri = "https://api.rucaptcha.com/createTask";
 
 try {
 
-    $result = $solver->request($data, $this->createTaskUri);
+    $result = $solver->request($data, $createTaskUri);
 
 } catch (\Exception $e) {
     die($e->getMessage());
