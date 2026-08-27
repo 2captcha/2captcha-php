@@ -2,11 +2,16 @@
 
 namespace TwoCaptcha\Generic;
 
+use Exception;
+
 class ApiClient
 {
     private $softId = 4585;
-    public $apiKey;
-    private $curl;
+    public $apiKey = -1;
+    private $curl = "";
+    public $timeout = 160;
+    public $pollingInterval = 10;
+
     private $createTaskUri = "https://api.rucaptcha.com/createTask";
 
     public function __construct(string $apiKey)
@@ -14,7 +19,8 @@ class ApiClient
         $this->apiKey = $apiKey;
     }
 
-    private function doRequest($uri, $data) {
+    private function doRequest($uri, $data)
+    {
         $response = $this->request($uri, $data);
 
         echo $response;
@@ -23,26 +29,54 @@ class ApiClient
         return $responseJson;
     }
 
-    private function createTask($data) {
+    private function createTask($data)
+    {
         echo "CreateTask Request";
         return $this->doRequest($this->createTaskUri, $data);
     }
 
-    public function solve($data) {
+    public function getTaskResult($taskId)
+    {
+        $startedAt = time();
+        $requestNum = 0;
+        while (true) {
+            $now = time();
+            if ($now - $startedAt < $this->timeout) {
+                sleep($this->pollingInterval);
+            } else {
+                break;
+            }
+
+            try {
+                                JSONObject jsonObject = new JSONObject();
+                jsonObject.put("clientKey", this.apiKey);
+                jsonObject.put("taskId", taskId);
+
+                HttpRequest request = request(jsonObject, getTaskResultUri);
+                
+            } catch (\Exception $e) {
+                die($e->getMessage());
+            }
+        }
+
+        throw new Exception('Timeout ' . $this->timeout . ' seconds reached');
+    }
+
+    public function solve($data)
+    {
         $data["softId"] = $this->softId;
         $response = $this->createTask($data);
         //echo $response;
         $taskId = $response->taskId;
         echo $taskId;
-/*
-        if (jsonObject.getJSONObject("task").has("callbackUrl")
-                && !jsonObject.getJSONObject("task").getString("callbackUrl").isEmpty())
-            return responseJsonObject;
-        return getTaskResult(this.taskId);
-        */
+
+        if ($data["callbackUrl"]) return $response;
+
+        return $this->getTaskResult($taskId);
     }
 
-    function request($uri, $data) {
+    function request($uri, $data)
+    {
 
         if (!$this->curl) $this->curl = curl_init();
 
