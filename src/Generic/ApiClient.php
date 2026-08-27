@@ -13,6 +13,7 @@ class ApiClient
     public $pollingInterval = 10;
 
     private $createTaskUri = "https://api.rucaptcha.com/createTask";
+    private $getTaskResultUri = "https://api.rucaptcha.com/getTaskResult";
 
     public function __construct(string $apiKey)
     {
@@ -31,14 +32,20 @@ class ApiClient
 
     private function createTask($data)
     {
-        echo "CreateTask Request";
+        echo "\n CreateTask Request";
         return $this->doRequest($this->createTaskUri, $data);
     }
 
     public function getTaskResult($taskId)
     {
+        $data = [
+            'clientKey' => $this->apiKey,
+            'taskId' => $taskId
+        ];
+
         $startedAt = time();
         $requestNum = 0;
+
         while (true) {
             $now = time();
             if ($now - $startedAt < $this->timeout) {
@@ -48,12 +55,19 @@ class ApiClient
             }
 
             try {
-                                JSONObject jsonObject = new JSONObject();
-                jsonObject.put("clientKey", this.apiKey);
-                jsonObject.put("taskId", taskId);
+                echo "\n GetTaskResult Request N: " . ++$requestNum;
+                $response = $this->doRequest($this->getTaskResultUri, $data);
 
-                HttpRequest request = request(jsonObject, getTaskResultUri);
-                
+                if ($response->errorId) {
+                    return $response;
+                }
+
+                $status = $response->status;
+                if ($status == "ready") {
+                    return $response;
+                }
+                //echo "temp";
+
             } catch (\Exception $e) {
                 die($e->getMessage());
             }
@@ -116,18 +130,4 @@ curl_close($curl);
 
 echo $resp;
 ?>
-
-
-*/
-/*    private int softId = 4581;
-    String apiKey;
-    Long taskId = -1L;
-    int timeout = 160;
-    int pollingInterval = 10;
-    HttpClient httpClient = HttpClient.newHttpClient();
-    String createTaskUri = "https://api.rucaptcha.com/createTask";
-    String getTaskResultUri = "https://api.rucaptcha.com/getTaskResult";
-    String getBalanceUri = "https://api.rucaptcha.com/getBalance";
-    String reportCorrectUri = "https://api.rucaptcha.com/reportCorrect";
-    String reportIncorrectUri = "https://api.rucaptcha.com/reportIncorrect";
 */
