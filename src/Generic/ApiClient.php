@@ -11,9 +11,13 @@ class ApiClient
     private $curl = "";
     public $timeout = 160;
     public $pollingInterval = 10;
+    public $taskId = -1;
 
     private $createTaskUri = "https://api.rucaptcha.com/createTask";
     private $getTaskResultUri = "https://api.rucaptcha.com/getTaskResult";
+    private $getBalanceUri = "https://api.rucaptcha.com/getBalance";
+    private $reportCorrectUri = "https://api.rucaptcha.com/reportCorrect";
+    private $reportIncorrectUri = "https://api.rucaptcha.com/reportIncorrect";
 
     public function __construct(string $apiKey)
     {
@@ -24,7 +28,8 @@ class ApiClient
     {
         $response = $this->request($uri, $data);
 
-        echo $response;
+        echo "\n" . $response;
+        
         $responseJson = json_decode($response);
 
         return $responseJson;
@@ -66,27 +71,25 @@ class ApiClient
                 if ($status == "ready") {
                     return $response;
                 }
-                //echo "temp";
 
             } catch (\Exception $e) {
                 die($e->getMessage());
             }
         }
 
-        throw new Exception('Timeout ' . $this->timeout . ' seconds reached');
+        throw new Exception("\n Timeout " . $this->timeout . " seconds reached");
     }
 
     public function solve($data)
     {
         $data["softId"] = $this->softId;
         $response = $this->createTask($data);
-        //echo $response;
-        $taskId = $response->taskId;
-        echo $taskId;
+        $this->taskId = $response->taskId;
+        echo $this->taskId;
 
         if ($data["callbackUrl"]) return $response;
 
-        return $this->getTaskResult($taskId);
+        return $this->getTaskResult($this->taskId);
     }
 
     function request($uri, $data)
@@ -104,6 +107,24 @@ class ApiClient
         //curl_close($curl);
 
         return $resp;
+    }
+
+    public function getBalance($data)
+    {
+        echo "\n Get Balance Request";
+        return $this->doRequest($this->getBalanceUri, $data);
+    }
+
+    public function reportCorrect($data)
+    {
+        echo "\n Report Correct Request";
+        return $this->doRequest($this->reportCorrectUri, $data);
+    }
+
+    public function reportIncorrect($data)
+    {
+        echo "\n Report Incorrect Request";
+        return $this->doRequest($this->reportIncorrectUri, $data);
     }
 }
 /*
