@@ -55,6 +55,7 @@ Examples of API requests for different captcha types are available on the [PHP c
     - [Basilisk](#basilisk)
     - [Hunt](#hunt)
     - [TSPD](#tspd)
+    - [Drag-and-Drop](#drag-and-drop)
   - [Other methods](#other-methods)
     - [send / getResult](#send--getresult)
     - [balance](#balance)
@@ -639,6 +640,20 @@ Use this method to bypass TSPD captcha. A proxy is required — there is no prox
             'type' => 'HTTPS',
             'uri'  => 'login:password@IP_address:PORT',
         ],
+    ]);
+```
+
+### Drag-and-Drop
+
+<sup>[API method description.](https://2captcha.com/2captcha-api#drag-and-drop-captcha)</sup>
+
+Use this method to solve a Drag-and-Drop captcha. Send a background image (`body`) and the images that need to be dragged onto it (`images`), and get back the coordinates where each of them should be placed. The result (`code`) is a string with one set of coordinates per image from `images`, in the same order, separated by `|` (an image that wasn't moved may come back as `null`). Dragging itself is not performed by the library — you place each image at the returned coordinates in your own code.
+
+```php
+    $result = $solver->drag_and_drop([
+        'body'     => $body, // background image, Base64-encoded
+        'images'   => [$image1, $image2], // images to drag, Base64-encoded, order matters
+        'hintText' => 'Drag the images to proper position',
     ]);
 ```
 

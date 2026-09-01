@@ -774,6 +774,27 @@ class TwoCaptcha
     }
 
     /**
+     * Wrapper for solving Drag-and-Drop captcha
+     *
+     * @param $captcha
+     * @return \stdClass
+     * @throws ApiException
+     * @throws NetworkException
+     * @throws TimeoutException
+     * @throws ValidationException
+     */
+    public function drag_and_drop($captcha)
+    {
+        if (!empty($captcha['images']) && is_array($captcha['images'])) {
+            $captcha['images'] = json_encode($captcha['images']);
+        }
+
+        $captcha['method'] = 'drag_drop';
+
+        return $this->solve($captcha);
+    }
+
+    /**
      * Sends captcha to `/in.php` and waits for it's result.
      * This helper can be used insted of manual using of `send` and `getResult` functions.
      *
