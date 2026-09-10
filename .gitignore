@@ -4,6 +4,8 @@
 /vendor
 composer.phar
 
+.vscode
+
 # Mac OS General
 .DS_Store
 .AppleDouble
