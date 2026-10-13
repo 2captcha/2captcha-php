@@ -774,6 +774,23 @@ class TwoCaptcha
     }
 
     /**
+     * Wrapper for solving Imperva (Incapsula) captcha
+     *
+     * @param $captcha
+     * @return \stdClass
+     * @throws ApiException
+     * @throws NetworkException
+     * @throws TimeoutException
+     * @throws ValidationException
+     */
+    public function imperva($captcha)
+    {
+        $captcha['method'] = 'incapsula';
+
+        return $this->solve($captcha);
+    }
+
+    /**
      * Wrapper for solving Drag-and-Drop captcha
      *
      * @param $captcha
@@ -1174,6 +1191,12 @@ class TwoCaptcha
             ],
             'atb_captcha' => [
                 'sitekey' => 'app_id',
+            ],
+            'incapsula' => [
+                'incapsulaScriptUrl' => 'incapsula_script_url',
+                'incapsulaCookies'   => 'incapsula_cookies',
+                'reese84UrlEndpoint' => 'reese84_url_endpoint',
+                'userAgent'          => 'useragent',
             ],
         ];
 

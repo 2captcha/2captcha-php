@@ -56,6 +56,7 @@ Examples of API requests for different captcha types are available on the [PHP c
     - [Hunt](#hunt)
     - [TSPD](#tspd)
     - [Drag-and-Drop](#drag-and-drop)
+    - [Imperva](#imperva)
   - [Other methods](#other-methods)
     - [send / getResult](#send--getresult)
     - [balance](#balance)
@@ -655,6 +656,33 @@ Use this method to solve a Drag-and-Drop captcha. Send a background image (`body
         'images'   => [$image1, $image2], // images to drag, Base64-encoded, order matters
         'hintText' => 'Drag the images to proper position',
     ]);
+```
+
+### Imperva
+
+<sup>[API method description.](https://2captcha.com/2captcha-api#imperva)</sup>
+
+Use this method to bypass Imperva (Incapsula). Pass the Incapsula script URL (`incapsulaScriptUrl`) and the Incapsula cookies received from the site before solving (`incapsulaCookies`). Optionally, you can also pass `reese84UrlEndpoint` and `userAgent`.
+
+> [!IMPORTANT]
+> To solve the Imperva captcha, you must use a proxy. It is recommended to use [residential proxies].
+
+```php
+    $result = $solver->imperva([
+        'url'                => 'https://example.com/login',
+        'incapsulaScriptUrl' => '/_Incapsula_Resource?SWUDNSAI=31&xinfo=1',
+        'incapsulaCookies'   => 'visid_incap_123456=sample; reese84UrlEndpoint=sample',
+        'proxy'              => [
+            'type' => 'HTTP',
+            'uri'  => 'login:password@1.2.3.4:8080',
+        ],
+    ]);
+```
+
+The result (`code`) is a JSON string with cookies rather than a token. Cookies from `domains` must be sent to the target site. If `headers.User-Agent` is present, use the same User-Agent in your requests to the site.
+
+```php
+    $solution = json_decode($result->code, true);
 ```
 
 
