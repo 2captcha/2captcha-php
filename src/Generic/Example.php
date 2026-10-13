@@ -27,6 +27,7 @@ function getBalance($apiClient, $key){
     ];
 
     $result = $apiClient->getBalance($data);
+    echo "\n";
 }
 
 function reportCorrect($apiClient, $key){
@@ -51,12 +52,12 @@ try {
 
     $result = $apiClient->solve($data);
 
-    getBalance($apiClient, $key);
+    //getBalance($apiClient, $key);
     reportCorrect($apiClient, $key);
-    reportIncorrect($apiClient, $key);
+    //reportIncorrect($apiClient, $key);
 
 } catch (\Exception $e) {
     die($e->getMessage());
 }
 
-die("\n Captcha solved");
+//die("\n Captcha solved");
