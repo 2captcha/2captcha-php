@@ -125,11 +125,11 @@ class ApiClient
     }
 
     /**
-     * Closes active CURL resource if it was created
+     * Closes active CURL resource if it was created (PHP 8.0+ frees it automatically)
      */
     public function __destruct()
     {
-        if ($this->curl) {
+        if ($this->curl && PHP_VERSION_ID < 80000) {
             curl_close($this->curl);
         }
     }
